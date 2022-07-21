@@ -37,6 +37,7 @@ dependencies:
   http:
   provider:
   intl:
+  syncfusion_flutter_charts:
 
 dev_dependencies:
   flutter_test:

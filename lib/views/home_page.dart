@@ -7,17 +7,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: Text('App Covid 19',style: TextStyle(fontSize: 25),),
-        centerTitle: true,
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.menu,
-          ),
-        ),
-      ),
+
       body: CovidPageList(),
     );
   }
