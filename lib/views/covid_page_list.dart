@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_covid_project/constants/string_constants.dart';
 import 'package:flutter_covid_project/views/description_page.dart';
 import 'package:provider/provider.dart';
 import '../components/flag_widget.dart';
+import '../constants/service_constants.dart';
 import '../controlers/covid_controller.dart';
 import '../controlers/infections.dart';
-import '../data/models/covid_models.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -17,7 +18,6 @@ class CovidPageList extends StatefulWidget {
 
 class _CovidPageListState extends State<CovidPageList> {
   CovidController? controller;
-
 
   @override
   void initState() {
@@ -47,13 +47,13 @@ class _CovidPageListState extends State<CovidPageList> {
               child: Row(
                 children: [
                   const Text(
-                    'Informaçoes por estado: ',
+                    StringConstants.InformacoesPorEstado,
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(width: 50),
+                  const SizedBox(width: 50),
                   IconButton(
                     onPressed: loadData,
                     icon: const Icon(
@@ -72,7 +72,7 @@ class _CovidPageListState extends State<CovidPageList> {
                 child: Row(
                   children: [
                     const Text(
-                      'Ultima atualização: ',
+                      StringConstants.UltimaAtualizacap,
                       style: TextStyle(fontSize: 16),
                     ),
                     const SizedBox(width: 20),
@@ -93,7 +93,7 @@ class _CovidPageListState extends State<CovidPageList> {
             ),
             const SizedBox(height: 10),
             const Text(
-              'Infecções mensais por Covid 19',
+              StringConstants.InfeccoesMensais,
               style: TextStyle(
                 fontSize: 20,
                 color: Colors.white,
@@ -164,7 +164,7 @@ class _CovidPageListState extends State<CovidPageList> {
               child: Container(
                 height: 250,
                 child: Image.asset(
-                  'images/mask3.png',
+                  ServiceConstants.ImageAsset,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -173,7 +173,7 @@ class _CovidPageListState extends State<CovidPageList> {
               left: 140,
               bottom: 120,
               child: Text(
-                'Use sempre mascara! ',
+                StringConstants.UseSempreMascara,
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -183,7 +183,7 @@ class _CovidPageListState extends State<CovidPageList> {
               left: 140,
               bottom: 90,
               child: Text(
-                'Utilize Alcool em gel',
+                StringConstants.UtilizeAlcoolGel,
                 style: TextStyle(
                   fontSize: 18,
                 ),
@@ -193,7 +193,7 @@ class _CovidPageListState extends State<CovidPageList> {
               left: 140,
               bottom: 60,
               child: Text(
-                'E Evite aglomeração',
+                StringConstants.EviteAglomeracao,
                 style: TextStyle(
                   fontSize: 18,
                 ),
@@ -209,7 +209,7 @@ class _CovidPageListState extends State<CovidPageList> {
     return AppBar(
       elevation: 0,
       title: Text(
-        'App Covid 19',
+       StringConstants.AppCovid19,
         style: TextStyle(fontSize: 25),
       ),
       centerTitle: true,
@@ -248,10 +248,10 @@ class _CovidPageListState extends State<CovidPageList> {
                   const SizedBox(height: 20),
                   Text(
                     lista.state.toString(),
-                    style: const TextStyle(fontSize: 18),
+                    style: const TextStyle(fontSize: 20),
                   ),
                   const SizedBox(height: 10),
-                  FlagWidget(state: state,height: 40),
+                  FlagWidget(state: state, height: 40),
                   const SizedBox(height: 20),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 18),
@@ -259,7 +259,7 @@ class _CovidPageListState extends State<CovidPageList> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(
-                          'Mortes:  ',
+                          StringConstants.Mortes,
                           style: TextStyle(fontSize: 16),
                         ),
                         Text(
@@ -281,7 +281,7 @@ class _CovidPageListState extends State<CovidPageList> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Casos:  ',
+                          StringConstants.Casos,
                           style: TextStyle(fontSize: 16),
                         ),
                         Text(
@@ -294,13 +294,12 @@ class _CovidPageListState extends State<CovidPageList> {
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: 20,
-                      vertical: 8,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Suspeitos:  ',
+                          StringConstants.Suspeitos,
                           style: TextStyle(fontSize: 16),
                         ),
                         Text(
@@ -317,6 +316,4 @@ class _CovidPageListState extends State<CovidPageList> {
           );
         });
   }
-
 }
-
