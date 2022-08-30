@@ -172,7 +172,7 @@ class Description extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 Container(
                   height: 220,
                   width: double.infinity,

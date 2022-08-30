@@ -37,7 +37,7 @@ class _CovidPageListState extends State<CovidPageList> {
     return LayoutBuilder(
       builder: (context,constraints)=>
       Scaffold(
-        appBar: AppBar(),
+        appBar: buildAppBar(),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -224,7 +224,7 @@ class _CovidPageListState extends State<CovidPageList> {
       elevation: 0,
       title: const Text(
        StringConstants.AppCovid19,
-        style: TextStyle(fontSize: 25),
+        style: TextStyle(fontSize: 25,color: Colors.white),
       ),
       centerTitle: true,
       leading: IconButton(
