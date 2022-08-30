@@ -33,124 +33,138 @@ class _CovidPageListState extends State<CovidPageList> {
   @override
   Widget build(BuildContext context) {
     CovidController provider = Provider.of<CovidController>(context);
-    return Scaffold(
-      appBar: buildAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20),
-            banner(),
-            const SizedBox(height: 10),
-            Container(
-              child: Row(
-                children: [
-                  const Text(
-                    StringConstants.InformacoesPorEstado,
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
+
+    return LayoutBuilder(
+      builder: (context,constraints)=>
+      Scaffold(
+        appBar: AppBar(),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 10),
+              banner(BoxConstraints,constraints),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Container(
+                  child: Row(
+                    children: [
+                      const Text(
+                        StringConstants.InformacoesPorEstado,
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(width: 50),
+                      IconButton(
+                        onPressed: loadData,
+                        icon: const Icon(
+                          Icons.refresh,
+                          size: 35,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 5,
+                    ),
+                    child: Row(
+                      children: [
+                        const Text(
+                          StringConstants.UltimaAtualizacap,
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        const SizedBox(width: 20),
+                        Text(
+                          (DateFormat(" dd/MM/yyyy")
+                              .format(DateTime.parse(DateTime.now().toString()))),
+                          style: const TextStyle(fontSize: 16, color: Colors.white),
+                        ),
+                      ],
                     ),
                   ),
-                  const SizedBox(width: 50),
-                  IconButton(
-                    onPressed: loadData,
-                    icon: const Icon(
-                      Icons.refresh,
-                      size: 35,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Container(
+                height: constraints.maxHeight /3.5,
+                width: double.infinity,
+                child: ListState(provider, constraints),
+              ),
+              const SizedBox(height: 10),
+               const Padding(
+                 padding: EdgeInsets.symmetric(horizontal: 10),
+                 child: Text(
+                  StringConstants.InfeccoesMensais,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+              ),
+               ),
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Container(
+                  height: constraints.maxHeight / 4,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Colors.white12),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: SfCartesianChart(
+                      primaryXAxis: CategoryAxis(),
+                      // Chart title
+                      //   title: ChartTitle(text: 'Monthly Covid-19 Infections'),
+                      // Enable legend
+                      legend: Legend(isVisible: true),
+                      // Enable tooltip
+                      tooltipBehavior: TooltipBehavior(enable: true),
+                      series: <ChartSeries<Infections, String>>[
+                        LineSeries<Infections, String>(
+                            dataSource: <Infections>[
+                              Infections('Jan', 35000),
+                              Infections('Feb', 20000),
+                              Infections('Mar', 34000),
+                              Infections('Apr', 32000),
+                              Infections('May', 40000),
+                              Infections('Jun', 60000)
+                            ],
+                            xValueMapper: (Infections victims, _) => victims.year,
+                            yValueMapper: (Infections victims, _) =>
+                                victims.victims,
+                            // Enable data label
+                            dataLabelSettings:
+                                const DataLabelSettings(isVisible: true))
+                      ],
                     ),
                   ),
-                ],
-              ),
-            ),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 5,
-                ),
-                child: Row(
-                  children: [
-                    const Text(
-                      StringConstants.UltimaAtualizacap,
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    const SizedBox(width: 20),
-                    Text(
-                      (DateFormat(" dd/MM/yyyy")
-                          .format(DateTime.parse(DateTime.now().toString()))),
-                      style: const TextStyle(fontSize: 16, color: Colors.white),
-                    ),
-                  ],
                 ),
               ),
-            ),
-            const SizedBox(height: 8),
-            Container(
-              height: 230,
-              width: double.infinity,
-              child: ListData(provider),
-            ),
-            const SizedBox(height: 10),
-            const Text(
-              StringConstants.InfeccoesMensais,
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 10),
-            Container(
-              height: 145,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Colors.white12),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: SfCartesianChart(
-                  primaryXAxis: CategoryAxis(),
-                  // Chart title
-                  //   title: ChartTitle(text: 'Monthly Covid-19 Infections'),
-                  // Enable legend
-                  legend: Legend(isVisible: true),
-                  // Enable tooltip
-                  tooltipBehavior: TooltipBehavior(enable: true),
-                  series: <ChartSeries<Infections, String>>[
-                    LineSeries<Infections, String>(
-                        dataSource: <Infections>[
-                          Infections('Jan', 35000),
-                          Infections('Feb', 20000),
-                          Infections('Mar', 34000),
-                          Infections('Apr', 32000),
-                          Infections('May', 40000),
-                          Infections('Jun', 60000)
-                        ],
-                        xValueMapper: (Infections victims, _) => victims.year,
-                        yValueMapper: (Infections victims, _) =>
-                            victims.victims,
-                        // Enable data label
-                        dataLabelSettings:
-                            const DataLabelSettings(isVisible: true))
-                  ],
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Padding banner() {
+  Padding banner(boxConstraints,constraints) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 10,
+        horizontal: 8,
         vertical: 10,
       ),
       child: Container(
-        height: 190,
+        height: constraints.maxHeight /3.7,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
@@ -175,27 +189,27 @@ class _CovidPageListState extends State<CovidPageList> {
               child: Text(
                 StringConstants.UseSempreMascara,
                 style: TextStyle(
+                  fontSize: 25,
+                ),
+              ),
+            ),
+            const Positioned(
+              left: 170,
+              bottom: 90,
+              child: Text(
+                StringConstants.UtilizeAlcoolGel,
+                style: TextStyle(
                   fontSize: 20,
                 ),
               ),
             ),
             const Positioned(
-              left: 140,
-              bottom: 90,
-              child: Text(
-                StringConstants.UtilizeAlcoolGel,
-                style: TextStyle(
-                  fontSize: 18,
-                ),
-              ),
-            ),
-            const Positioned(
-              left: 140,
+              left: 170,
               bottom: 60,
               child: Text(
                 StringConstants.EviteAglomeracao,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                 ),
               ),
             ),
@@ -208,7 +222,7 @@ class _CovidPageListState extends State<CovidPageList> {
   AppBar buildAppBar() {
     return AppBar(
       elevation: 0,
-      title: Text(
+      title: const Text(
        StringConstants.AppCovid19,
         style: TextStyle(fontSize: 25),
       ),
@@ -222,7 +236,7 @@ class _CovidPageListState extends State<CovidPageList> {
     );
   }
 
-  ListView ListData(CovidController provider) {
+  ListView ListState(CovidController provider, BoxConstraints constraints) {
     return ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: provider.lista.length,
@@ -238,7 +252,7 @@ class _CovidPageListState extends State<CovidPageList> {
             },
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 5),
-              width: 200,
+              width: constraints.maxWidth/2 - 10,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: Colors.white30,
