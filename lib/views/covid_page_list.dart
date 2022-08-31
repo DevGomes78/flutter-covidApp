@@ -122,7 +122,7 @@ class _CovidPageListState extends State<CovidPageList> {
                ),
               const SizedBox(height: 10),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 10),
                 child: Container(
                   height: constraints.maxHeight / 4,
                   width: double.infinity,
