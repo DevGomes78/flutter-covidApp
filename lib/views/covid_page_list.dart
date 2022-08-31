@@ -4,6 +4,7 @@ import 'package:flutter_covid_project/views/description_page.dart';
 import 'package:provider/provider.dart';
 import '../components/flag_widget.dart';
 import '../constants/service_constants.dart';
+import '../controlers/copvid_date_controller.dart';
 import '../controlers/covid_controller.dart';
 import '../controlers/infections.dart';
 import 'package:intl/intl.dart';
@@ -17,11 +18,14 @@ class CovidPageList extends StatefulWidget {
 }
 
 class _CovidPageListState extends State<CovidPageList> {
+  var listMarco;
   CovidController? controller;
+  CovidDateController? controllerDate;
 
   @override
   void initState() {
     loadData();
+    loadDate();
     super.initState();
   }
 
@@ -29,11 +33,17 @@ class _CovidPageListState extends State<CovidPageList> {
     controller = context.read<CovidController>();
     controller!.getData();
   }
+  loadDate() {
+    controllerDate = context.read<CovidDateController>();
+    controllerDate!.getDate();
+  }
+
 
   @override
   Widget build(BuildContext context) {
     CovidController provider = Provider.of<CovidController>(context);
-
+    CovidDateController providerDate = Provider.of<CovidDateController>(context);
+    print(providerDate.listaMarco.length);
     return LayoutBuilder(
       builder: (context,constraints)=>
       Scaffold(
@@ -119,9 +129,11 @@ class _CovidPageListState extends State<CovidPageList> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: Colors.white12),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: SfCartesianChart(
+                  child: ListView.builder(
+                    itemCount: providerDate.listaMarco.length,
+                    itemBuilder: (context,index)=>
+                     SfCartesianChart(
+                     
                       primaryXAxis: CategoryAxis(),
                       // Chart title
                       //   title: ChartTitle(text: 'Monthly Covid-19 Infections'),
@@ -132,7 +144,7 @@ class _CovidPageListState extends State<CovidPageList> {
                       series: <ChartSeries<Infections, String>>[
                         LineSeries<Infections, String>(
                             dataSource: <Infections>[
-                              Infections('Jan', 35000),
+                              Infections('Jan',double.parse(providerDate.listaMarco[index].deaths.toString())),
                               Infections('Feb', 20000),
                               Infections('Mar', 34000),
                               Infections('Apr', 32000),

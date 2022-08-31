@@ -1,10 +1,10 @@
 class StringConstants{
   static const InformacoesPorEstado = 'Informaçoes por estado:';
   static const UltimaAtualizacap = 'Ultima atualização:';
-  static const InfeccoesMensais = 'Infecções mensais por Covid 19';
+  static const InfeccoesMensais = 'Infecções últimos 6 meses';
   static const UseSempreMascara = 'Use sempre mascara!';
-  static const UtilizeAlcoolGel ='Utilize Alcool em gel';
-  static const EviteAglomeracao = 'E Evite aglomeração';
+  static const UtilizeAlcoolGel ='Utilize álcool em gel';
+  static const EviteAglomeracao = 'E evite aglomeração';
   static const AppCovid19 = 'App Covid 19';
   static const Mortes ='Mortes';
   static const Casos ='Casos';

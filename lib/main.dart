@@ -4,6 +4,8 @@ import 'package:flutter_covid_project/views/home_page.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
+import 'controlers/copvid_date_controller.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -17,6 +19,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context)=> CovidController()),
+        ChangeNotifierProvider(create: (context)=> CovidDateController()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
