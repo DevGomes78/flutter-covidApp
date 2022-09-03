@@ -133,7 +133,7 @@ class _CovidPageListState extends State<CovidPageList> {
                 width: double.infinity,
                 child: ListState(provider, constraints),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 15),
                const Padding(
                  padding: EdgeInsets.symmetric(horizontal: 10),
                  child: Text(
@@ -149,7 +149,7 @@ class _CovidPageListState extends State<CovidPageList> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 10),
                 child: Container(
-                  height: constraints.maxHeight / 5,
+                  height: constraints.maxHeight / 2,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
