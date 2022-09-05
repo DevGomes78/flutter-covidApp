@@ -1,7 +1,7 @@
 class StringConstants{
   static const InformacoesPorEstado = 'Informações por estado';
   static const UltimaAtualizacap = 'Ultima atualização:';
-  static const InfeccoesMensais = 'Total de mortes por estado últimos 6 meses';
+  static const InfeccoesMensais = 'Total de mortes últimos 6 meses';
   static const UseSempreMascara = 'Use sempre mascara!';
   static const UtilizeAlcoolGel ='Utilize álcool em gel';
   static const EviteAglomeracao = 'E evite aglomeração';

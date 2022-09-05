@@ -187,8 +187,7 @@ class Description extends StatelessWidget {
                       title: ChartTitle(
                           text: StringConstants.InfeccoesMensais,
                           textStyle: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
                           )),
                       // Enable legend
                       legend: Legend(isVisible: true),
