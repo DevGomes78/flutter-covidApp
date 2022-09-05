@@ -127,10 +127,10 @@ class _CovidPageListState extends State<CovidPageList> {
         child: Stack(
           children: [
             Positioned(
-              left: -45,
+              left: -50,
               bottom: -80,
-              child: Container(
-                height: 250,
+              child: SizedBox(
+                height: 280,
                 child: Image.asset(
                   ServiceConstants.ImageAsset,
                   fit: BoxFit.cover,
@@ -138,12 +138,12 @@ class _CovidPageListState extends State<CovidPageList> {
               ),
             ),
             const Positioned(
-              left: 140,
+              left: 150,
               bottom: 120,
               child: Text(
                 StringConstants.UseSempreMascara,
                 style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 24,
                 ),
               ),
             ),
@@ -183,10 +183,18 @@ class _CovidPageListState extends State<CovidPageList> {
       centerTitle: true,
       leading: IconButton(
         onPressed: () {},
-        icon: Icon(
+        icon: const Icon(
           Icons.menu,
         ),
       ),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.search,
+          ),
+        ),
+      ],
     );
   }
 
