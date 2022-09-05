@@ -25,12 +25,7 @@ class _CovidPageListState extends State<CovidPageList> {
   @override
   void initState() {
     loadData();
-    loadDate1();
-    loadDate2();
-    loadDate3();
-    loadDate4();
-    loadDate5();
-    loadDate6();
+
     super.initState();
   }
 
@@ -38,41 +33,13 @@ class _CovidPageListState extends State<CovidPageList> {
     controller = context.read<CovidController>();
     controller!.getData();
   }
-  loadDate1() {
-    controllerDate = context.read<CovidDateController>();
-    controllerDate!.getDate1();
-  }
-  loadDate2() {
-    controllerDate = context.read<CovidDateController>();
-    controllerDate!.getDate2();
-  }
-  loadDate3() {
-    controllerDate = context.read<CovidDateController>();
-    controllerDate!.getDate3();
-  }
-  loadDate4() {
-    controllerDate = context.read<CovidDateController>();
-    controllerDate!.getDate4();
-  }
-  loadDate5() {
-    controllerDate = context.read<CovidDateController>();
-    controllerDate!.getDate5();
-  }
-  loadDate6() {
-    controllerDate = context.read<CovidDateController>();
-    controllerDate!.getDate6();
-  }
+
 
 
   @override
   Widget build(BuildContext context) {
     CovidController provider = Provider.of<CovidController>(context);
-    CovidDateController providerDate1 = Provider.of<CovidDateController>(context);
-    CovidDateController providerDate2 = Provider.of<CovidDateController>(context);
-    CovidDateController providerDate3 = Provider.of<CovidDateController>(context);
-    CovidDateController providerDate4 = Provider.of<CovidDateController>(context);
-    CovidDateController providerDate5 = Provider.of<CovidDateController>(context);
-    CovidDateController providerDate6 = Provider.of<CovidDateController>(context);
+
     return LayoutBuilder(
       builder: (context,constraints)=>
       Scaffold(
@@ -134,66 +101,9 @@ class _CovidPageListState extends State<CovidPageList> {
                 child: ListState(provider, constraints),
               ),
               const SizedBox(height: 15),
-               const Padding(
-                 padding: EdgeInsets.symmetric(horizontal: 10),
-                 child: Text(
-                  StringConstants.InfeccoesMensais,
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-              ),
-               ),
+
               const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 10),
-                child: Container(
-                  height: constraints.maxHeight / 2,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.white12),
-                  child: ListView.builder(
-                    itemCount: providerDate1.listaMarco.length,
-                    itemBuilder: (context,index)=>
-                     SfCartesianChart(
-                      primaryXAxis: CategoryAxis(),
-                      // Chart title
-                         title: ChartTitle(text: providerDate1.listaMarco[index].state.toString(),
-                         textStyle: const TextStyle(color: Colors.yellow)
-                         ),
-                      // Enable legend
-                  //   legend: Legend(isVisible: true),
-                      // Enable tooltip
-                      tooltipBehavior: TooltipBehavior(enable: true),
-                      series: <ChartSeries<Infections, String>>[
-                        LineSeries<Infections, String>(
-                            dataSource: <Infections>[
-                              Infections('Marco',double.parse(
-                                  providerDate1.listaMarco[index].deaths.toString())),
-                              Infections('Abril',double.parse(
-                                  providerDate2.listaAbril[index].deaths.toString())),
-                              Infections('Maio',double.parse(
-                                  providerDate3.listaMaio[index].deaths.toString())),
-                              Infections('Junho', double.parse(
-                                  providerDate4.listaJunho[index].deaths.toString())),
-                              Infections('Julho', double.parse(
-                                  providerDate5.listaJulho[index].deaths.toString())),
-                              Infections('Agosto',double.parse(
-                                  providerDate6.listaAgosto[index].deaths.toString())),
-                            ],
-                            xValueMapper: (Infections victims, _) => victims.year,
-                            yValueMapper: (Infections victims, _) =>
-                                victims.victims,
-                            // Enable data label
-                            dataLabelSettings:
-                                const DataLabelSettings(isVisible: true))
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+
             ],
           ),
         ),
