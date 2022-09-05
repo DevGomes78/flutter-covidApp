@@ -96,7 +96,7 @@ class _CovidPageListState extends State<CovidPageList> {
               ),
               const SizedBox(height: 8),
               SizedBox(
-                height: constraints.maxHeight /3.5,
+                height: constraints.maxHeight /4,
                 width: double.infinity,
                 child: ListState(provider, constraints),
               ),
@@ -209,7 +209,7 @@ class _CovidPageListState extends State<CovidPageList> {
               width: constraints.maxWidth/2 - 10,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                color: Colors.white30,
+                color: Colors.black26,
               ),
               child: Column(
                 children: [
@@ -234,7 +234,7 @@ class _CovidPageListState extends State<CovidPageList> {
                           lista.deaths.toString(),
                           style: const TextStyle(
                               fontSize: 16,
-                              color: Colors.red,
+                              color: Colors.white,
                               fontWeight: FontWeight.bold),
                         )
                       ],
@@ -254,30 +254,12 @@ class _CovidPageListState extends State<CovidPageList> {
                         ),
                         Text(
                           lista.cases.toString(),
-                          style: TextStyle(fontSize: 16, color: Colors.orange),
+                          style: TextStyle(fontSize: 16, color: Colors.white),
                         ),
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          StringConstants.Suspeitos,
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        Text(
-                          (lista.suspects.toString()),
-                          style: const TextStyle(
-                              fontSize: 16, color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ),
+
                 ],
               ),
             ),
