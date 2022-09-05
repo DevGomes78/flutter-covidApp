@@ -258,7 +258,7 @@ class _CovidPageListState extends State<CovidPageList> {
               width: constraints.maxWidth / 2 - 10,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.black26,
+                color: Colors.black38,
               ),
               child: Column(
                 children: [
