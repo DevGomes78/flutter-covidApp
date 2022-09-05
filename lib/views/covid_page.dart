@@ -70,7 +70,7 @@ class _CovidPageState extends State<CovidPage> {
               Stack(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Container(
                       height: constraints.maxHeight / 4,
                       width: double.infinity,
