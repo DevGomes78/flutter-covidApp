@@ -9,14 +9,14 @@ import '../controlers/covid_controller.dart';
 
 import 'package:intl/intl.dart';
 
-class CovidPageList extends StatefulWidget {
-  const CovidPageList({Key? key}) : super(key: key);
+class CovidPage extends StatefulWidget {
+  const CovidPage({Key? key}) : super(key: key);
 
   @override
-  State<CovidPageList> createState() => _CovidPageListState();
+  State<CovidPage> createState() => _CovidPageState();
 }
 
-class _CovidPageListState extends State<CovidPageList> {
+class _CovidPageState extends State<CovidPage> {
   CovidController? controller;
   CovidDateController? controllerDate;
 
@@ -32,7 +32,6 @@ class _CovidPageListState extends State<CovidPageList> {
     controller!.getData();
   }
 
-
   @override
   Widget build(BuildContext context) {
     CovidController provider = Provider.of<CovidController>(context);
@@ -46,60 +45,28 @@ class _CovidPageListState extends State<CovidPageList> {
             children: [
               const SizedBox(height: 10),
               banner(BoxConstraints, constraints),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  children: [
-                    const Text(
-                      StringConstants.InformacoesPorEstado,
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(width: 80),
-                    IconButton(
-                      onPressed: loadData,
-                      icon: const Icon(
-                        Icons.refresh,
-                        size: 35,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 5,
-                  ),
-                  child: Row(
-                    children: [
-                      const Text(
-                        StringConstants.UltimaAtualizacap,
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      const SizedBox(width: 20),
-                      Text(
-                        (DateFormat(" dd/MM/yyyy")
-                            .format(DateTime.parse(DateTime.now().toString()))),
-                        style:
-                            const TextStyle(fontSize: 16, color: Colors.white),
-                      ),
-                    ],
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  StringConstants.InformacoesPorEstado,
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 10),
               SizedBox(
                 height: constraints.maxHeight / 4,
                 width: double.infinity,
                 child: listState(provider, constraints),
               ),
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10,vertical: 15),
-                child: Text(StringConstants.NoticiasSobreCovid,style: TextStyle(fontSize: 22),),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: Text(
+                  StringConstants.NoticiasSobreCovid,
+                  style: TextStyle(fontSize: 22),
+                ),
               ),
               Stack(
                 children: [
@@ -303,7 +270,8 @@ class _CovidPageListState extends State<CovidPageList> {
                         ),
                         Text(
                           lista.cases.toString(),
-                          style: const TextStyle(fontSize: 16, color: Colors.white),
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.white),
                         ),
                       ],
                     ),

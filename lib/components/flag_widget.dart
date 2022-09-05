@@ -1,110 +1,110 @@
 import 'package:flutter/material.dart';
 class FlagWidget extends StatelessWidget {
 double height;
- FlagWidget({
+ FlagWidget({Key? key,
     required this.height,
     required this.state,
-  }) ;
+  }) : super(key: key) ;
 
   final String? state;
 
   @override
   Widget build(BuildContext context) {
     return state == 'São Paulo'
-        ? Container(height: height, child: Image.asset('images/saopaulo.png'))
+        ? SizedBox(height: height, child: Image.asset('images/saopaulo.png'))
         : state == 'Minas Gerais'
-        ? Container(height: height, child: Image.asset('images/mg.jpg'))
+        ? SizedBox(height: height, child: Image.asset('images/mg.jpg'))
         : state == 'Paraná'
-        ? Container(height: height, child: Image.asset('images/pr.png'))
+        ? SizedBox(height: height, child: Image.asset('images/pr.png'))
         : state == 'Rio Grande do Sul'
-        ? Container(
+        ? SizedBox(
         height: height, child: Image.asset('images/rgs.png'))
         : state == 'Rio de Janeiro'
-        ? Container(
+        ? SizedBox(
         height: height, child: Image.asset('images/rj.png'))
         : state == 'Bahia'
-        ? Container(
+        ? SizedBox(
         height: height, child: Image.asset('images/ba.png'))
         : state == 'Santa Catarina'
-        ? Container(
+        ? SizedBox(
         height: height,
         child: Image.asset('images/sc.png'))
         : state == 'Goiás'
-        ? Container(
+        ? SizedBox(
         height: height,
         child: Image.asset('images/sc.png'))
         : state == 'Ceará'
-        ? Container(
+        ? SizedBox(
         height: height,
         child: Image.asset('images/ce.png'))
         : state == 'Espírito Santo'
-        ? Container(
+        ? SizedBox(
         height: height,
         child: Image.asset(
             'images/es.png'))
         : state == 'Pernambuco'
-        ? Container(
+        ? SizedBox(
         height: height,
         child: Image.asset(
             'images/pe.png'))
         : state == 'Distrito Federal'
-        ? Container(
+        ? SizedBox(
         height:height,
         child: Image.asset(
             'images/df.png'))
         : state == 'Pará'
-        ? Container(
+        ? SizedBox(
         height: height,
         child: Image.asset(
             'images/para.png'))
         : state == 'Mato Grosso'
-        ? Container(
+        ? SizedBox(
         height: height,
         child: Image.asset(
             'images/mt.png'))
         : state == 'Paraíba'
-        ? Container(
+        ? SizedBox(
         height: height,
         child: Image
             .asset(
             'images/pb.png'))
         : state ==
         'Amazonas'
-        ? Container(
+        ? SizedBox(
         height:
         height,
         child: Image.asset(
             'images/am.png'))
         : state ==
         'Mato Grosso do Sul'
-        ? Container(
+        ? SizedBox(
         height:
         height,
         child: Image.asset(
             'images/mts.png'))
         : state ==
         'Rio Grande do Norte'
-        ? Container(
+        ? SizedBox(
         height: height,
         child: Image.asset('images/rgn.png'))
         : state == 'Maranhão'
-        ? Container(height: height, child: Image.asset('images/ma.png'))
+        ? SizedBox(height: height, child: Image.asset('images/ma.png'))
         : state == 'Rondônia'
-        ? Container(height: height, child: Image.asset('images/ro.png'))
+        ? SizedBox(height: height, child: Image.asset('images/ro.png'))
         : state == 'Piauí'
-        ? Container(height: height, child: Image.asset('images/pi.png'))
+        ? SizedBox(height: height, child: Image.asset('images/pi.png'))
         : state == 'Sergipe'
-        ? Container(height: height, child: Image.asset('images/se.png'))
+        ? SizedBox(height: height, child: Image.asset('images/se.png'))
         : state == 'Tocantins'
-        ? Container(height: height, child: Image.asset('images/to.png'))
+        ? SizedBox(height: height, child: Image.asset('images/to.png'))
         : state == 'Alagoas'
-        ? Container(height: height, child: Image.asset('images/al.png'))
+        ? SizedBox(height: height, child: Image.asset('images/al.png'))
         : state == 'Amapá'
-        ? Container(height: height, child: Image.asset('images/amp.png'))
+        ? SizedBox(height: height, child: Image.asset('images/amp.png'))
         : state == 'Roraima'
-        ? Container(height: height, child: Image.asset('images/rom.png'))
+        ? SizedBox(height: height, child: Image.asset('images/rom.png'))
         : state == 'Acre'
-        ? Container(height: height, child: Image.asset('images/acr.png'))
+        ? SizedBox(height: height, child: Image.asset('images/acr.png'))
         : const SizedBox(height: 30);
   }
 }
