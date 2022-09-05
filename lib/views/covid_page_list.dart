@@ -18,7 +18,6 @@ class CovidPageList extends StatefulWidget {
 }
 
 class _CovidPageListState extends State<CovidPageList> {
-
   CovidController? controller;
   CovidDateController? controllerDate;
 
@@ -34,22 +33,19 @@ class _CovidPageListState extends State<CovidPageList> {
     controller!.getData();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     CovidController provider = Provider.of<CovidController>(context);
 
     return LayoutBuilder(
-      builder: (context,constraints)=>
-      Scaffold(
+      builder: (context, constraints) => Scaffold(
         appBar: buildAppBar(),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 10),
-              banner(BoxConstraints,constraints),
+              banner(BoxConstraints, constraints),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
@@ -88,7 +84,8 @@ class _CovidPageListState extends State<CovidPageList> {
                       Text(
                         (DateFormat(" dd/MM/yyyy")
                             .format(DateTime.parse(DateTime.now().toString()))),
-                        style: const TextStyle(fontSize: 16, color: Colors.white),
+                        style:
+                            const TextStyle(fontSize: 16, color: Colors.white),
                       ),
                     ],
                   ),
@@ -96,14 +93,54 @@ class _CovidPageListState extends State<CovidPageList> {
               ),
               const SizedBox(height: 8),
               SizedBox(
-                height: constraints.maxHeight /4,
+                height: constraints.maxHeight / 4,
                 width: double.infinity,
                 child: ListState(provider, constraints),
               ),
               const SizedBox(height: 15),
-
+              Stack(
+                children: [
+                  Container(
+                    height: constraints.maxHeight / 4,
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(50),
+                        bottomRight: Radius.circular(50),
+                      ),
+                      image: DecorationImage(
+                        image: AssetImage('images/teste.jpg.webp'),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    child: Container(
+                      height: constraints.maxHeight / 4,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        gradient: const LinearGradient(
+                          colors: [Colors.transparent, Colors.black],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(15.0),
+                            child: Text(
+                              StringConstants.NoticiasTexto,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
               const SizedBox(height: 10),
-
             ],
           ),
         ),
@@ -111,14 +148,14 @@ class _CovidPageListState extends State<CovidPageList> {
     );
   }
 
-  Padding banner(boxConstraints,constraints) {
+  Padding banner(boxConstraints, constraints) {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 8,
         vertical: 10,
       ),
       child: Container(
-        height: constraints.maxHeight /3.7,
+        height: constraints.maxHeight / 3.7,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
@@ -177,8 +214,8 @@ class _CovidPageListState extends State<CovidPageList> {
     return AppBar(
       elevation: 0,
       title: const Text(
-       StringConstants.AppCovid19,
-        style: TextStyle(fontSize: 25,color: Colors.white),
+        StringConstants.AppCovid19,
+        style: TextStyle(fontSize: 25, color: Colors.white),
       ),
       centerTitle: true,
       leading: IconButton(
@@ -214,7 +251,7 @@ class _CovidPageListState extends State<CovidPageList> {
             },
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 5),
-              width: constraints.maxWidth/2 - 10,
+              width: constraints.maxWidth / 2 - 10,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: Colors.black26,
@@ -267,7 +304,6 @@ class _CovidPageListState extends State<CovidPageList> {
                       ],
                     ),
                   ),
-
                 ],
               ),
             ),
