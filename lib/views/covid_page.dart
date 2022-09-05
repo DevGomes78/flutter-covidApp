@@ -51,7 +51,6 @@ class _CovidPageState extends State<CovidPage> {
                   StringConstants.InformacoesPorEstado,
                   style: TextStyle(
                     fontSize: 22,
-                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
