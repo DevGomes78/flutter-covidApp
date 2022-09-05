@@ -100,41 +100,42 @@ class _CovidPageListState extends State<CovidPageList> {
               const SizedBox(height: 15),
               Stack(
                 children: [
-                  Container(
-                    height: constraints.maxHeight / 4,
-                    width: double.infinity,
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(50),
-                        bottomRight: Radius.circular(50),
-                      ),
-                      image: DecorationImage(
-                        image: AssetImage('images/teste.jpg.webp'),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Container(
                       height: constraints.maxHeight / 4,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        gradient: const LinearGradient(
-                          colors: [Colors.transparent, Colors.black],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
+                        borderRadius: BorderRadius.circular(20),
+                        image: const DecorationImage(
+                          image: AssetImage('images/teste.jpg.webp'),
+                          fit: BoxFit.fill,
                         ),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Text(
-                              StringConstants.NoticiasTexto,
-                            ),
+                      child: Container(
+                        height: constraints.maxHeight / 4,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          gradient: const LinearGradient(
+                            colors: [Colors.transparent, Colors.black],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
                           ),
-                        ],
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Padding(
+                              padding: EdgeInsets.all(15.0),
+                              child: Text(
+                                StringConstants.NoticiasTexto,
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
