@@ -258,7 +258,7 @@ class _CovidPageListState extends State<CovidPageList> {
               width: constraints.maxWidth / 2 - 10,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.black38,
+                color: Colors.black26,
               ),
               child: Column(
                 children: [
@@ -297,13 +297,13 @@ class _CovidPageListState extends State<CovidPageList> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           StringConstants.Casos,
                           style: TextStyle(fontSize: 16),
                         ),
                         Text(
                           lista.cases.toString(),
-                          style: TextStyle(fontSize: 16, color: Colors.white),
+                          style: const TextStyle(fontSize: 16, color: Colors.white),
                         ),
                       ],
                     ),
