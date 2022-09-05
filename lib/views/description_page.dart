@@ -215,7 +215,6 @@ class Description extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                cardNoticiasCovid(BoxConstraints,constraints),
               ],
             ),
           ),
@@ -224,46 +223,4 @@ class Description extends StatelessWidget {
     );
   }
 
-  Container cardNoticiasCovid(boxConstraints,constraints) {
-    return Container(
-      height: constraints.maxHeight /4,
-      width: double.infinity,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10), color: Colors.white12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              StringConstants.NoticiasSobreCovid,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Container(
-                  height: 60,
-                  child: Image.asset(ServiceConstants.ImageAssetNoticias),
-                ),
-                const SizedBox(width: 20),
-                const Expanded(
-                  child: Text(
-                    StringConstants.NoticiasTexto,
-                    style: TextStyle(fontSize: 15),
-                    overflow: TextOverflow.clip,
-                  ),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    );
-  }
 }
