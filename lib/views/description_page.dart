@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_covid_project/constants/service_constants.dart';
 import 'package:flutter_covid_project/constants/string_constants.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../components/flag_widget.dart';
-import '../controlers/covid_controller.dart';
 import '../controlers/infections.dart';
 import '../data/models/covid_models.dart';
-import 'package:provider/provider.dart';
 
 class Description extends StatelessWidget {
   Data data;
@@ -16,7 +13,6 @@ class Description extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CovidController provider = Provider.of<CovidController>(context);
     var state = data.state.toString();
     return LayoutBuilder(
       builder: (context,constraints)=>
@@ -24,7 +20,7 @@ class Description extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 10,
-            vertical: 20,
+            vertical: 50,
           ),
           child: SingleChildScrollView(
             child: Column(
@@ -174,7 +170,7 @@ class Description extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 Container(
-                  height: 220,
+                  height: 240,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
