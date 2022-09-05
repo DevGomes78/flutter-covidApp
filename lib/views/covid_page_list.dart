@@ -57,7 +57,7 @@ class _CovidPageListState extends State<CovidPageList> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(width: 50),
+                    const SizedBox(width: 80),
                     IconButton(
                       onPressed: loadData,
                       icon: const Icon(
@@ -97,7 +97,10 @@ class _CovidPageListState extends State<CovidPageList> {
                 width: double.infinity,
                 child: ListState(provider, constraints),
               ),
-              const SizedBox(height: 15),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10,vertical: 15),
+                child: Text(StringConstants.NoticiasSobreCovid,style: TextStyle(fontSize: 22),),
+              ),
               Stack(
                 children: [
                   Padding(
@@ -159,7 +162,7 @@ class _CovidPageListState extends State<CovidPageList> {
         height: constraints.maxHeight / 3.7,
         width: double.infinity,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(20),
           color: Colors.red,
         ),
         child: Stack(
@@ -254,7 +257,7 @@ class _CovidPageListState extends State<CovidPageList> {
               margin: const EdgeInsets.symmetric(horizontal: 5),
               width: constraints.maxWidth / 2 - 10,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(20),
                 color: Colors.black26,
               ),
               child: Column(
