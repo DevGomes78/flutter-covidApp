@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_covid_project/views/covid_page.dart';
+import 'covid_page2.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
 
-      body: CovidPageList(),
+      body: CovidPage2(),
     );
   }
 }
