@@ -9,14 +9,14 @@ import '../controlers/covid_controller.dart';
 
 import 'package:intl/intl.dart';
 
-class CovidPage extends StatefulWidget {
-  const CovidPage({Key? key}) : super(key: key);
+class CovidPageList extends StatefulWidget {
+  const CovidPageList({Key? key}) : super(key: key);
 
   @override
-  State<CovidPage> createState() => _CovidPageState();
+  State<CovidPageList> createState() => _CovidPageListState();
 }
 
-class _CovidPageState extends State<CovidPage> {
+class _CovidPageListState extends State<CovidPageList> {
   CovidController? controller;
   CovidDateController? controllerDate;
 
@@ -32,6 +32,7 @@ class _CovidPageState extends State<CovidPage> {
     controller!.getData();
   }
 
+
   @override
   Widget build(BuildContext context) {
     CovidController provider = Provider.of<CovidController>(context);
@@ -45,32 +46,65 @@ class _CovidPageState extends State<CovidPage> {
             children: [
               const SizedBox(height: 10),
               banner(BoxConstraints, constraints),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  StringConstants.InformacoesPorEstado,
-                  style: TextStyle(
-                    fontSize: 22,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  children: [
+                    const Text(
+                      StringConstants.InformacoesPorEstado,
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(width: 80),
+                    IconButton(
+                      onPressed: loadData,
+                      icon: const Icon(
+                        Icons.refresh,
+                        size: 35,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 5,
+                  ),
+                  child: Row(
+                    children: [
+                      const Text(
+                        StringConstants.UltimaAtualizacap,
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      const SizedBox(width: 20),
+                      Text(
+                        (DateFormat(" dd/MM/yyyy")
+                            .format(DateTime.parse(DateTime.now().toString()))),
+                        style:
+                            const TextStyle(fontSize: 16, color: Colors.white),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 8),
               SizedBox(
                 height: constraints.maxHeight / 4,
                 width: double.infinity,
                 child: listState(provider, constraints),
               ),
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: Text(
-                  StringConstants.NoticiasSobreCovid,
-                  style: TextStyle(fontSize: 22),
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 10,vertical: 15),
+                child: Text(StringConstants.NoticiasSobreCovid,style: TextStyle(fontSize: 22),),
               ),
               Stack(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Container(
                       height: constraints.maxHeight / 4,
                       width: double.infinity,
@@ -269,8 +303,7 @@ class _CovidPageState extends State<CovidPage> {
                         ),
                         Text(
                           lista.cases.toString(),
-                          style: const TextStyle(
-                              fontSize: 16, color: Colors.white),
+                          style: const TextStyle(fontSize: 16, color: Colors.white),
                         ),
                       ],
                     ),
