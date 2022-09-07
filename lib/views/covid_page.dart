@@ -286,7 +286,7 @@ class _CovidPage2State extends State<CovidPage2> {
                   const SizedBox(height: 10),
                   FlagWidget(state: state, height: 40),
                   const SizedBox(height: 10),
-                  const Divider(color: Colors.white),
+                  const Divider(color: Colors.grey),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 18),
                     child: Row(
