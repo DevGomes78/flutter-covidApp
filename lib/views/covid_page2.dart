@@ -118,7 +118,7 @@ class _CovidPage2State extends State<CovidPage2> {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
                     child: Text(StringConstants.InfeccoesMensais,
-                      style: TextStyle(fontSize: 18,),),
+                      style: TextStyle(fontSize: 20,),),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(

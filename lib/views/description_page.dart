@@ -15,8 +15,7 @@ class Description extends StatelessWidget {
   Widget build(BuildContext context) {
     var state = data.state.toString();
     return LayoutBuilder(
-      builder: (context,constraints)=>
-       Scaffold(
+      builder: (context, constraints) => Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 10,
@@ -40,7 +39,7 @@ class Description extends StatelessWidget {
                         children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 100,
+                              horizontal: 10,
                               vertical: 20,
                             ),
                             child: Text(
@@ -69,9 +68,7 @@ class Description extends StatelessWidget {
                                 Text(
                                   data.deaths.toString(),
                                   style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.red),
+                                      fontSize: 20, color: Colors.white),
                                 ),
                               ],
                             ),
@@ -94,9 +91,7 @@ class Description extends StatelessWidget {
                                 Text(
                                   data.cases.toString(),
                                   style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.orange),
+                                      fontSize: 20, color: Colors.white),
                                 ),
                               ],
                             ),
@@ -118,9 +113,7 @@ class Description extends StatelessWidget {
                                 Text(
                                   data.suspects.toString(),
                                   style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.yellow),
+                                      fontSize: 20, color: Colors.white),
                                 ),
                               ],
                             ),
@@ -142,10 +135,10 @@ class Description extends StatelessWidget {
                                 const SizedBox(width: 90),
                                 Text(
                                   (DateFormat(" dd/MM/yyyy").format(
-                                      DateTime.parse(data.datetime.toString()))),
+                                      DateTime.parse(
+                                          data.datetime.toString()))),
                                   style: const TextStyle(
                                     fontSize: 20,
-                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ],
@@ -160,7 +153,7 @@ class Description extends StatelessWidget {
                           Navigator.pop(context);
                         },
                         icon: const Icon(
-                          Icons.arrow_back,
+                          Icons.arrow_back_ios_new,
                           size: 30,
                           color: Colors.white,
                         ),
@@ -169,47 +162,40 @@ class Description extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                  child: Text(StringConstants.InfeccoesMensais,
+                      style: TextStyle(fontSize: 20)),
+                ),
                 Container(
-                  height: 240,
+                  height: constraints.maxHeight / 3,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white12),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: SfCartesianChart(
-                      primaryXAxis: CategoryAxis(),
-                      // Charttitle
-                      title: ChartTitle(
-                          text: StringConstants.InfeccoesMensais,
-                          textStyle: const TextStyle(
-                            fontSize: 15,
-                          )),
-                      // Enable legend
-                      legend: Legend(isVisible: true),
-                      // Enable tooltip
-                      tooltipBehavior: TooltipBehavior(enable: true),
-                      series: <ChartSeries<Infections, String>>[
-                        LineSeries<Infections, String>(
-                            dataSource: <Infections>[
-                              Infections('Jan', 14000),
-                              Infections('Feb', 11000),
-                              Infections('Mar', 15000),
-                              Infections('Apr', 13000),
-                              Infections('May', 16000),
-                              Infections('Jun', 12000)
-                            ],
-                            xValueMapper: (Infections victims, _) => victims.year,
-                            yValueMapper: (Infections victims, _) =>
-                                victims.victims,
-                            // Enable data label
-                            dataLabelSettings:
-                                const DataLabelSettings(isVisible: true))
-                      ],
-                    ),
+                  child: SfCartesianChart(
+                    primaryXAxis: CategoryAxis(),
+                    tooltipBehavior: TooltipBehavior(enable: true),
+                    series: <ChartSeries<Infections, String>>[
+                      LineSeries<Infections, String>(
+                          dataSource: <Infections>[
+                            Infections('Jan', 14000),
+                            Infections('Feb', 11000),
+                            Infections('Mar', 15000),
+                            Infections('Apr', 13000),
+                            Infections('May', 16000),
+                            Infections('Jun', 12000)
+                          ],
+                          xValueMapper: (Infections victims, _) =>
+                              victims.year,
+                          yValueMapper: (Infections victims, _) =>
+                              victims.victims,
+                          // Enable data label
+                          dataLabelSettings:
+                              const DataLabelSettings(isVisible: true))
+                    ],
                   ),
                 ),
-                const SizedBox(height: 10),
               ],
             ),
           ),
@@ -217,5 +203,4 @@ class Description extends StatelessWidget {
       ),
     );
   }
-
 }
