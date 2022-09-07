@@ -79,5 +79,4 @@ List<Data> listaMarco = [];
       throw Exception('erro');
     }
   }
-
 }
