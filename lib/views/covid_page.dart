@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_covid_project/constants/string_constants.dart';
 import 'package:flutter_covid_project/views/description_page.dart';
 import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 import '../components/flag_widget.dart';
 import '../constants/service_constants.dart';
 import '../controlers/copvid_date_controller.dart';
@@ -9,20 +10,23 @@ import '../controlers/covid_controller.dart';
 
 import 'package:intl/intl.dart';
 
-class CovidPage extends StatefulWidget {
-  const CovidPage({Key? key}) : super(key: key);
+import '../controlers/infections.dart';
+
+class CovidPage2 extends StatefulWidget {
+  const CovidPage2({Key? key}) : super(key: key);
 
   @override
-  State<CovidPage> createState() => _CovidPageState();
+  State<CovidPage2> createState() => _CovidPage2State();
 }
 
-class _CovidPageState extends State<CovidPage> {
+class _CovidPage2State extends State<CovidPage2> {
   CovidController? controller;
   CovidDateController? controllerDate;
 
   @override
   void initState() {
     loadData();
+    loadDate();
 
     super.initState();
   }
@@ -32,89 +36,141 @@ class _CovidPageState extends State<CovidPage> {
     controller!.getData();
   }
 
+  loadDate() {
+    controllerDate = context.read<CovidDateController>();
+    controllerDate!.getDate1();
+    controllerDate!.getDate2();
+    controllerDate!.getDate3();
+    controllerDate!.getDate4();
+    controllerDate!.getDate5();
+    controllerDate!.getDate6();
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     CovidController provider = Provider.of<CovidController>(context);
 
     return LayoutBuilder(
-      builder: (context, constraints) => Scaffold(
-        appBar: buildAppBar(),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 10),
-              banner(BoxConstraints, constraints),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  StringConstants.InformacoesPorEstado,
-                  style: TextStyle(
-                    fontSize: 22,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              SizedBox(
-                height: constraints.maxHeight / 4,
-                width: double.infinity,
-                child: listState(provider, constraints),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: Text(
-                  StringConstants.NoticiasSobreCovid,
-                  style: TextStyle(fontSize: 22),
-                ),
-              ),
-              Stack(
+      builder: (context, constraints) =>
+          Scaffold(
+            appBar: buildAppBar(),
+            body: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const SizedBox(height: 10),
+                  banner(BoxConstraints, constraints),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: Container(
-                      height: constraints.maxHeight / 4,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: const DecorationImage(
-                          image: AssetImage('images/teste.jpg.webp'),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      child: Container(
-                        height: constraints.maxHeight / 4,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          gradient: const LinearGradient(
-                            colors: [Colors.transparent, Colors.black],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      children: [
+                        const Text(
+                          StringConstants.InformacoesPorEstado,
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Padding(
-                              padding: EdgeInsets.all(15.0),
-                              child: Text(
-                                StringConstants.NoticiasTexto,
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ),
-                          ],
+                        const SizedBox(width: 80),
+                        IconButton(
+                          onPressed: loadData,
+                          icon: const Icon(
+                            Icons.refresh,
+                            size: 35,
+                          ),
                         ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 5,
+                      ),
+                      child: Row(
+                        children: [
+                          const Text(
+                            StringConstants.UltimaAtualizacap,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          const SizedBox(width: 20),
+                          Text(
+                            (DateFormat(" dd/MM/yyyy")
+                                .format(DateTime.parse(
+                                DateTime.now().toString()))),
+                            style:
+                            const TextStyle(fontSize: 16, color: Colors.white),
+                          ),
+                        ],
                       ),
                     ),
                   ),
+                  const SizedBox(height: 8),
+                  SizedBox(
+                    height: constraints.maxHeight / 4,
+                    width: double.infinity,
+                    child: listState(provider, constraints),
+                  ),
+                  const SizedBox(height: 10),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                    child: Text(
+                      StringConstants.NoticiasSobreCovid,
+                      style: TextStyle(fontSize: 22),
+                    ),
+                  ),
+                  Stack(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Container(
+                          height: constraints.maxHeight / 4,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            image: const DecorationImage(
+                              image: AssetImage('images/teste.jpg.webp'),
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          child: Container(
+                            height: constraints.maxHeight / 4,
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              gradient: const LinearGradient(
+                                colors: [Colors.transparent, Colors.black],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Padding(
+                                  padding: EdgeInsets.all(15.0),
+                                  child: Text(
+                                    StringConstants.NoticiasTexto,
+                                    style: TextStyle(fontSize: 16),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+
                 ],
               ),
-              const SizedBox(height: 10),
-            ],
+            ),
           ),
-        ),
-      ),
     );
   }
 
@@ -125,7 +181,7 @@ class _CovidPageState extends State<CovidPage> {
         vertical: 10,
       ),
       child: Container(
-        height: constraints.maxHeight / 3.7,
+        height: constraints.maxHeight / 4,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
@@ -224,18 +280,19 @@ class _CovidPageState extends State<CovidPage> {
               width: constraints.maxWidth / 2 - 10,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.black26,
+                color: Colors.white12,
               ),
               child: Column(
                 children: [
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   Text(
                     lista.state.toString(),
-                    style: const TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 18),
                   ),
                   const SizedBox(height: 10),
                   FlagWidget(state: state, height: 40),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
+                  Divider(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 18),
                     child: Row(
