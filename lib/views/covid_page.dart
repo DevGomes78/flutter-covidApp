@@ -281,12 +281,12 @@ class _CovidPage2State extends State<CovidPage2> {
                   const SizedBox(height: 10),
                   Text(
                     lista.state.toString(),
-                    style: const TextStyle(fontSize: 18),
+                    style: const TextStyle(fontSize: 18, color: Colors.white),
                   ),
                   const SizedBox(height: 10),
                   FlagWidget(state: state, height: 40),
                   const SizedBox(height: 10),
-                  Divider(),
+                  const Divider(color: Colors.white),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 18),
                     child: Row(
