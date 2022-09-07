@@ -19,7 +19,7 @@ class Description extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 10,
-            vertical: 50,
+            vertical: 20,
           ),
           child: SingleChildScrollView(
             child: Column(
