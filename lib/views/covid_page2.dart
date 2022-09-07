@@ -297,14 +297,15 @@ class _CovidPage2State extends State<CovidPage2> {
               ),
               child: Column(
                 children: [
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   Text(
                     lista.state.toString(),
-                    style: const TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 18),
                   ),
                   const SizedBox(height: 10),
                   FlagWidget(state: state, height: 40),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
+                  Divider(),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 18),
                     child: Row(
