@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_covid_project/constants/string_constants.dart';
 import 'package:flutter_covid_project/views/description_page.dart';
 import 'package:provider/provider.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 import '../components/flag_widget.dart';
 import '../constants/service_constants.dart';
 import '../controlers/copvid_date_controller.dart';
 import '../controlers/covid_controller.dart';
-
 import 'package:intl/intl.dart';
-
-import '../controlers/infections.dart';
 
 class CovidPage2 extends StatefulWidget {
   const CovidPage2({Key? key}) : super(key: key);

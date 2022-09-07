@@ -99,12 +99,13 @@ class Description extends StatelessWidget {
                     data.state.toString(),
                     style: const TextStyle(
                       fontSize: 25,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
                 FlagWidget(state: state, height: 100),
-                const SizedBox(height: 30),
+                const SizedBox(height: 10),
+                const Divider(),
+                const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
@@ -121,9 +122,8 @@ class Description extends StatelessWidget {
                       Text(
                         data.deaths.toString(),
                         style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.red),
+                          fontSize: 20,
+                        ),
                       ),
                     ],
                   ),
@@ -139,16 +139,14 @@ class Description extends StatelessWidget {
                         StringConstants.Casos,
                         style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       const SizedBox(width: 80),
                       Text(
                         data.cases.toString(),
                         style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.orange),
+                          fontSize: 20,
+                        ),
                       ),
                     ],
                   ),
@@ -163,16 +161,14 @@ class Description extends StatelessWidget {
                         StringConstants.Suspeitos,
                         style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       const SizedBox(width: 45),
                       Text(
                         data.suspects.toString(),
                         style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.yellow),
+                          fontSize: 20,
+                        ),
                       ),
                     ],
                   ),
@@ -188,7 +184,6 @@ class Description extends StatelessWidget {
                         StringConstants.Data,
                         style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       const SizedBox(width: 90),
