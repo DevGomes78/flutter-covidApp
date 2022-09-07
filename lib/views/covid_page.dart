@@ -26,7 +26,6 @@ class _CovidPage2State extends State<CovidPage2> {
   @override
   void initState() {
     loadData();
-    loadDate();
 
     super.initState();
   }
@@ -35,17 +34,6 @@ class _CovidPage2State extends State<CovidPage2> {
     controller = context.read<CovidController>();
     controller!.getData();
   }
-
-  loadDate() {
-    controllerDate = context.read<CovidDateController>();
-    controllerDate!.getDate1();
-    controllerDate!.getDate2();
-    controllerDate!.getDate3();
-    controllerDate!.getDate4();
-    controllerDate!.getDate5();
-    controllerDate!.getDate6();
-  }
-
 
 
   @override
