@@ -44,52 +44,9 @@ class _CovidPageState extends State<CovidPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 10),
-              banner(BoxConstraints, constraints),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  children: [
-                    const Text(
-                      StringConstants.InformacoesPorEstado,
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(width: 80),
-                    IconButton(
-                      onPressed: loadData,
-                      icon: const Icon(
-                        Icons.refresh,
-                        size: 35,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 5,
-                  ),
-                  child: Row(
-                    children: [
-                      const Text(
-                        StringConstants.UltimaAtualizacap,
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      const SizedBox(width: 20),
-                      Text(
-                        (DateFormat(" dd/MM/yyyy")
-                            .format(DateTime.parse(DateTime.now().toString()))),
-                        style:
-                            const TextStyle(fontSize: 16, color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              cardUseMascara(BoxConstraints, constraints),
+              textIfonState(),
+              textInfostatusUpdate(),
               const SizedBox(height: 8),
               SizedBox(
                 height: constraints.maxHeight / 4,
@@ -103,49 +60,7 @@ class _CovidPageState extends State<CovidPage> {
                   style: TextStyle(fontSize: 22),
                 ),
               ),
-              Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Container(
-                      height: constraints.maxHeight / 4,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: const DecorationImage(
-                          image: AssetImage('images/teste.jpg.webp'),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      child: Container(
-                        height: constraints.maxHeight / 4,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          gradient: const LinearGradient(
-                            colors: [Colors.transparent, Colors.black],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                          ),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Padding(
-                              padding: EdgeInsets.all(15.0),
-                              child: Text(
-                                StringConstants.NoticiasTexto,
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              cardNoticiaCovid(constraints),
               const SizedBox(height: 10),
             ],
           ),
@@ -154,7 +69,103 @@ class _CovidPageState extends State<CovidPage> {
     );
   }
 
-  Padding banner(boxConstraints, constraints) {
+  Stack cardNoticiaCovid(BoxConstraints constraints) {
+    return Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Container(
+            height: constraints.maxHeight / 4,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              image: const DecorationImage(
+                image: AssetImage('images/teste.jpg.webp'),
+                fit: BoxFit.fill,
+              ),
+            ),
+            child: Container(
+              height: constraints.maxHeight / 4,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                gradient: const LinearGradient(
+                  colors: [Colors.transparent, Colors.black],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.all(15.0),
+                    child: Text(
+                      StringConstants.NoticiasTexto,
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Padding textInfostatusUpdate() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 5,
+        ),
+        child: Row(
+          children: [
+            const Text(
+              StringConstants.UltimaAtualizacap,
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(width: 20),
+            Text(
+              (DateFormat(" dd/MM/yyyy")
+                  .format(DateTime.parse(DateTime.now().toString()))),
+              style: const TextStyle(fontSize: 16, color: Colors.white),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Padding textIfonState() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        children: [
+          const Text(
+            StringConstants.InformacoesPorEstado,
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(width: 80),
+          IconButton(
+            onPressed: loadData,
+            icon: const Icon(
+              Icons.refresh,
+              size: 35,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Padding cardUseMascara(boxConstraints, constraints) {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 8,
