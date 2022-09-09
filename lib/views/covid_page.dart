@@ -3,7 +3,7 @@ import 'package:flutter_covid_project/constants/string_constants.dart';
 import 'package:flutter_covid_project/views/description_page.dart';
 import 'package:provider/provider.dart';
 import '../components/flag_widget.dart';
-import '../constants/service_constants.dart';
+import '../constants/image_constants.dart';
 import '../controlers/copvid_date_controller.dart';
 import '../controlers/covid_controller.dart';
 import 'package:intl/intl.dart';
@@ -80,7 +80,7 @@ class _CovidPageState extends State<CovidPage> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               image: const DecorationImage(
-                image: AssetImage('images/teste.jpg.webp'),
+                image: AssetImage(ImageConstants.ImageAssetNoticias),
                 fit: BoxFit.fill,
               ),
             ),
@@ -184,7 +184,7 @@ class _CovidPageState extends State<CovidPage> {
                 child: SizedBox(
                   height: 280,
                   child: Image.asset(
-                    ServiceConstants.ImageAsset,
+                    ImageConstants.ImageAsset,
                     fit: BoxFit.cover,
                   ),
                 ),
