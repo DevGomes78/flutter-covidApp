@@ -24,11 +24,25 @@ class Description extends StatelessWidget {
               const SizedBox(height: 40),
               flagInfoDetails(state, context),
               const SizedBox(height: 10),
+              textInfeccoesmensais(),
               graficStatus(constraints),
               const SizedBox(height: 10),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Padding textInfeccoesmensais() {
+    return const Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: 10,
+        vertical: 10,
+      ),
+      child: Text(
+        StringConstants.InfeccoesMensais,
+        style: TextStyle(fontSize: 20),
       ),
     );
   }
@@ -45,14 +59,6 @@ class Description extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: SfCartesianChart(
             primaryXAxis: CategoryAxis(),
-            // Charttitle
-            title: ChartTitle(
-                text: StringConstants.InfeccoesMensais,
-                textStyle: const TextStyle(
-                  fontSize: 15,
-                )),
-            // Enable legend
-            legend: Legend(isVisible: true),
             // Enable tooltip
             tooltipBehavior: TooltipBehavior(enable: true),
             series: <ChartSeries<Infections, String>>[
@@ -116,7 +122,6 @@ class Description extends StatelessWidget {
                         StringConstants.Mortes,
                         style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       const SizedBox(width: 70),
@@ -193,7 +198,6 @@ class Description extends StatelessWidget {
                             .format(DateTime.parse(data.datetime.toString()))),
                         style: const TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],

@@ -194,7 +194,11 @@ class _CovidPageState extends State<CovidPage> {
                 bottom: 120,
                 child: Text(
                   StringConstants.UseSempreMascara,
-                  style: TextStyle(fontSize: 24, color: Colors.black),
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               const Positioned(
@@ -273,14 +277,15 @@ class _CovidPageState extends State<CovidPage> {
               ),
               child: Column(
                 children: [
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   Text(
                     lista.state.toString(),
                     style: const TextStyle(fontSize: 20),
                   ),
                   const SizedBox(height: 10),
                   FlagWidget(state: state, height: 40),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
+                  const Divider(color: Colors.grey),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 18),
                     child: Row(
