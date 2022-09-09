@@ -12,5 +12,5 @@ class StringConstants{
   static const Data = 'Data';
   static const NoticiasSobreCovid = 'Notícias sobre a covid-19';
   static const NoticiasTexto = 'A média móvel de casos de covid-19 no Brasil ficou em 52.225 hoje. Este é o 15º dia consecutivo em tendência de estabilidade. Os dados são do consórcio de veículos de imprensa.';
-
+  static const Procurar ='Pesquisar estado';
 }

@@ -6,17 +6,17 @@ import '../components/flag_widget.dart';
 import '../constants/service_constants.dart';
 import '../controlers/copvid_date_controller.dart';
 import '../controlers/covid_controller.dart';
-
 import 'package:intl/intl.dart';
+import '../controlers/seach_state.dart';
 
-class CovidPageList extends StatefulWidget {
-  const CovidPageList({Key? key}) : super(key: key);
+class CovidPage extends StatefulWidget {
+  const CovidPage({Key? key}) : super(key: key);
 
   @override
-  State<CovidPageList> createState() => _CovidPageListState();
+  State<CovidPage> createState() => _CovidPageState();
 }
 
-class _CovidPageListState extends State<CovidPageList> {
+class _CovidPageState extends State<CovidPage> {
   CovidController? controller;
   CovidDateController? controllerDate;
 
@@ -29,9 +29,8 @@ class _CovidPageListState extends State<CovidPageList> {
 
   loadData() {
     controller = context.read<CovidController>();
-    controller!.getData();
+    controller!.getData(query: '');
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -98,8 +97,11 @@ class _CovidPageListState extends State<CovidPageList> {
                 child: listState(provider, constraints),
               ),
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10,vertical: 15),
-                child: Text(StringConstants.NoticiasSobreCovid,style: TextStyle(fontSize: 22),),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: Text(
+                  StringConstants.NoticiasSobreCovid,
+                  style: TextStyle(fontSize: 22),
+                ),
               ),
               Stack(
                 children: [
@@ -158,57 +160,50 @@ class _CovidPageListState extends State<CovidPageList> {
         horizontal: 8,
         vertical: 10,
       ),
-      child: Container(
-        height: constraints.maxHeight / 3.7,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.red,
-        ),
-        child: Stack(
-          children: [
-            Positioned(
-              left: -50,
-              bottom: -80,
-              child: SizedBox(
-                height: 280,
-                child: Image.asset(
-                  ServiceConstants.ImageAsset,
-                  fit: BoxFit.cover,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: SizedBox(
+          height: constraints.maxHeight / 3.7,
+          width: double.infinity,
+          child: Stack(
+            children: [
+              Positioned(
+                left: -10,
+                bottom: -80,
+                child: SizedBox(
+                  height: 280,
+                  child: Image.asset(
+                    ServiceConstants.ImageAsset,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
-            const Positioned(
-              left: 150,
-              bottom: 120,
-              child: Text(
-                StringConstants.UseSempreMascara,
-                style: TextStyle(
-                  fontSize: 24,
+              const Positioned(
+                left: 150,
+                bottom: 120,
+                child: Text(
+                  StringConstants.UseSempreMascara,
+                  style: TextStyle(fontSize: 24, color: Colors.black),
                 ),
               ),
-            ),
-            const Positioned(
-              left: 170,
-              bottom: 90,
-              child: Text(
-                StringConstants.UtilizeAlcoolGel,
-                style: TextStyle(
-                  fontSize: 20,
+              const Positioned(
+                left: 170,
+                bottom: 90,
+                child: Text(
+                  StringConstants.UtilizeAlcoolGel,
+                  style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
               ),
-            ),
-            const Positioned(
-              left: 170,
-              bottom: 60,
-              child: Text(
-                StringConstants.EviteAglomeracao,
-                style: TextStyle(
-                  fontSize: 20,
+              const Positioned(
+                left: 170,
+                bottom: 60,
+                child: Text(
+                  StringConstants.EviteAglomeracao,
+                  style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -230,7 +225,12 @@ class _CovidPageListState extends State<CovidPageList> {
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            showSearch(
+              context: context,
+              delegate: SearchState(),
+            );
+          },
           icon: const Icon(
             Icons.search,
           ),
@@ -303,7 +303,8 @@ class _CovidPageListState extends State<CovidPageList> {
                         ),
                         Text(
                           lista.cases.toString(),
-                          style: const TextStyle(fontSize: 16, color: Colors.white),
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.white),
                         ),
                       ],
                     ),

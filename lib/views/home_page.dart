@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'covid_page2.dart';
+import 'covid_page.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
 
-      body: CovidPage2(),
+      body: CovidPage(),
     );
   }
 }
