@@ -8,7 +8,7 @@ class CovidController extends ChangeNotifier {
   List<Data> lista = [];
 
   Future<List<Data>> getData({String? query}) async {
-    final response = await http.get(Uri.parse(ServiceConstants.baseUrl));
+    final response = await http.get(Uri.parse(ServiceConstants.baseApiUrl));
     if (response.statusCode == 200) {
       var decodejson = jsonDecode(response.body);
       decodejson['data'].forEach((item) => lista.add(Data.fromJson(item)));

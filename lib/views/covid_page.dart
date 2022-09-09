@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_covid_project/constants/string_constants.dart';
 import 'package:flutter_covid_project/views/description_page.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../components/flag_widget.dart';
+import '../constants/error_constants.dart';
 import '../constants/image_constants.dart';
+import '../constants/service_constants.dart';
 import '../controlers/covid_controller.dart';
 import 'package:intl/intl.dart';
 import '../controlers/search_controller.dart';
@@ -215,6 +218,21 @@ class _CovidPageState extends State<CovidPage> {
                   style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
               ),
+               Positioned(
+                left: 170,
+                bottom: 10,
+                child: InkWell(
+                  onTap: callUrlCovid,
+                  child: const Text(
+                    'Saiba mais em https://www.saopaulo.sp.leg.br',
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -328,5 +346,17 @@ class _CovidPageState extends State<CovidPage> {
             ),
           );
         });
+  }
+  void callUrlCovid() async {
+    const url = ServiceConstants.urlPrevencaoCovid;
+    if (await launch(url)) {
+      await launch(
+        url,
+        enableJavaScript: true,
+        forceWebView: true,
+      );
+    } else {
+      throw ErrorConstants.erroUrlCovid + url;
+    }
   }
 }

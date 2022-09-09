@@ -37,6 +37,7 @@ dependencies:
   http:
   provider:
   intl:
+  url_launcher:
   syncfusion_flutter_charts:
 
 dev_dependencies:
