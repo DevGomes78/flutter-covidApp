@@ -42,18 +42,21 @@ class SearchState extends SearchDelegate {
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
                   var lista = snapshot.data![index];
-                  return ListTile(
-                    title: Text(
-                      lista.state.toString(),
+                  return Card(
+                    elevation: 2,
+                    child: ListTile(
+                      title: Text(
+                        lista.state.toString(),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Description(
+                                  data: lista,
+                                )));
+                      },
                     ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Description(
-                                data: lista,
-                              )));
-                    },
                   );
                 });
           }
