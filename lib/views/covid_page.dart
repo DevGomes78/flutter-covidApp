@@ -3,21 +3,20 @@ import 'package:flutter_covid_project/constants/string_constants.dart';
 import 'package:flutter_covid_project/views/description_page.dart';
 import 'package:provider/provider.dart';
 import '../components/flag_widget.dart';
-import '../constants/service_constants.dart';
-import '../controlers/copvid_date_controller.dart';
+import '../constants/image_constants.dart';
 import '../controlers/covid_controller.dart';
 import 'package:intl/intl.dart';
+import '../controlers/search_controller.dart';
 
-class CovidPage2 extends StatefulWidget {
-  const CovidPage2({Key? key}) : super(key: key);
+class CovidPage extends StatefulWidget {
+  const CovidPage({Key? key}) : super(key: key);
 
   @override
-  State<CovidPage2> createState() => _CovidPage2State();
+  State<CovidPage> createState() => _CovidPageState();
 }
 
-class _CovidPage2State extends State<CovidPage2> {
+class _CovidPageState extends State<CovidPage> {
   CovidController? controller;
-  CovidDateController? controllerDate;
 
   @override
   void initState() {
@@ -28,7 +27,7 @@ class _CovidPage2State extends State<CovidPage2> {
 
   loadData() {
     controller = context.read<CovidController>();
-    controller!.getData();
+    controller!.getData(query: '');
   }
 
   @override
@@ -43,18 +42,24 @@ class _CovidPage2State extends State<CovidPage2> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 10),
-              banner(BoxConstraints, constraints),
-              textInfoState(),
-              textStatusDate(),
+              cardUseMascara(BoxConstraints, constraints),
+              textIfonState(),
+              textInfostatusUpdate(),
               const SizedBox(height: 8),
               SizedBox(
                 height: constraints.maxHeight / 4,
                 width: double.infinity,
                 child: listState(provider, constraints),
               ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                child: Text(
+                  StringConstants.NoticiasSobreCovid,
+                  style: TextStyle(fontSize: 22),
+                ),
+              ),
+              cardNoticiaCovid(constraints),
               const SizedBox(height: 10),
-              textNoticeCovid(),
-              bannerInfoCovid(constraints),
             ],
           ),
         ),
@@ -62,28 +67,18 @@ class _CovidPage2State extends State<CovidPage2> {
     );
   }
 
-  Padding textNoticeCovid() {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-      child: Text(
-        StringConstants.NoticiasSobreCovid,
-        style: TextStyle(fontSize: 22),
-      ),
-    );
-  }
-
-  Stack bannerInfoCovid(BoxConstraints constraints) {
+  Stack cardNoticiaCovid(BoxConstraints constraints) {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Container(
             height: constraints.maxHeight / 4,
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               image: const DecorationImage(
-                image: AssetImage('images/teste.jpg.webp'),
+                image: AssetImage(ImageConstants.ImageAssetNoticias),
                 fit: BoxFit.fill,
               ),
             ),
@@ -118,7 +113,7 @@ class _CovidPage2State extends State<CovidPage2> {
     );
   }
 
-  Padding textStatusDate() {
+  Padding textInfostatusUpdate() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Padding(
@@ -143,7 +138,7 @@ class _CovidPage2State extends State<CovidPage2> {
     );
   }
 
-  Padding textInfoState() {
+  Padding textIfonState() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
@@ -168,63 +163,60 @@ class _CovidPage2State extends State<CovidPage2> {
     );
   }
 
-  Padding banner(boxConstraints, constraints) {
+  Padding cardUseMascara(boxConstraints, constraints) {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 8,
         vertical: 10,
       ),
-      child: Container(
-        height: constraints.maxHeight / 4,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.red,
-        ),
-        child: Stack(
-          children: [
-            Positioned(
-              left: -50,
-              bottom: -80,
-              child: SizedBox(
-                height: 280,
-                child: Image.asset(
-                  ServiceConstants.ImageAsset,
-                  fit: BoxFit.cover,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: SizedBox(
+          height: constraints.maxHeight / 3.7,
+          width: double.infinity,
+          child: Stack(
+            children: [
+              Positioned(
+                left: -10,
+                bottom: -80,
+                child: SizedBox(
+                  height: 280,
+                  child: Image.asset(
+                    ImageConstants.ImageAsset,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
-            const Positioned(
-              left: 150,
-              bottom: 120,
-              child: Text(
-                StringConstants.UseSempreMascara,
-                style: TextStyle(
-                  fontSize: 24,
+              const Positioned(
+                left: 150,
+                bottom: 120,
+                child: Text(
+                  StringConstants.UseSempreMascara,
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            const Positioned(
-              left: 170,
-              bottom: 90,
-              child: Text(
-                StringConstants.UtilizeAlcoolGel,
-                style: TextStyle(
-                  fontSize: 20,
+              const Positioned(
+                left: 170,
+                bottom: 90,
+                child: Text(
+                  StringConstants.UtilizeAlcoolGel,
+                  style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
               ),
-            ),
-            const Positioned(
-              left: 170,
-              bottom: 60,
-              child: Text(
-                StringConstants.EviteAglomeracao,
-                style: TextStyle(
-                  fontSize: 20,
+              const Positioned(
+                left: 170,
+                bottom: 60,
+                child: Text(
+                  StringConstants.EviteAglomeracao,
+                  style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -246,7 +238,12 @@ class _CovidPage2State extends State<CovidPage2> {
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            showSearch(
+              context: context,
+              delegate: SearchState(),
+            );
+          },
           icon: const Icon(
             Icons.search,
           ),
@@ -274,14 +271,14 @@ class _CovidPage2State extends State<CovidPage2> {
               width: constraints.maxWidth / 2 - 10,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.white12,
+                color: Colors.grey[600],
               ),
               child: Column(
                 children: [
                   const SizedBox(height: 10),
                   Text(
                     lista.state.toString(),
-                    style: const TextStyle(fontSize: 18, color: Colors.white),
+                    style: const TextStyle(fontSize: 20),
                   ),
                   const SizedBox(height: 10),
                   FlagWidget(state: state, height: 40),
