@@ -41,7 +41,7 @@ class Description extends StatelessWidget {
         vertical: 10,
       ),
       child: Text(
-        StringConstants.InfeccoesMensais,
+        StringConstants.infeccoesMensais,
         style: TextStyle(fontSize: 20),
       ),
     );
@@ -119,7 +119,7 @@ class Description extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        StringConstants.Mortes,
+                        StringConstants.mortes,
                         style: TextStyle(
                           fontSize: 20,
                         ),
@@ -142,7 +142,7 @@ class Description extends StatelessWidget {
                   child: Row(
                     children: [
                       const Text(
-                        StringConstants.Casos,
+                        StringConstants.casos,
                         style: TextStyle(
                           fontSize: 20,
                         ),
@@ -164,7 +164,7 @@ class Description extends StatelessWidget {
                   child: Row(
                     children: [
                       const Text(
-                        StringConstants.Suspeitos,
+                        StringConstants.suspeitos,
                         style: TextStyle(
                           fontSize: 20,
                         ),
@@ -187,7 +187,7 @@ class Description extends StatelessWidget {
                   child: Row(
                     children: [
                       const Text(
-                        StringConstants.Data,
+                        StringConstants.data,
                         style: TextStyle(
                           fontSize: 20,
                         ),

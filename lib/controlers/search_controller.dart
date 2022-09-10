@@ -67,7 +67,7 @@ class SearchState extends SearchDelegate {
   Widget buildSuggestions(BuildContext context) {
     return const Center(
       child: Text(
-        StringConstants.Procurar,
+        StringConstants.procurar,
         style: TextStyle(fontSize: 22),
       ),
     );
