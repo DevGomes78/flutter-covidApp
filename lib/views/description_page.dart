@@ -3,7 +3,7 @@ import 'package:flutter_covid_project/constants/string_constants.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../components/flag_widget.dart';
-import '../controlers/infections.dart';
+import '../data/models/infections.dart';
 import '../data/models/covid_models.dart';
 import 'covid_page.dart';
 
