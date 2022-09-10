@@ -49,18 +49,8 @@ class _CovidPageState extends State<CovidPage> {
               textIfonState(),
               textInfostatusUpdate(),
               const SizedBox(height: 8),
-              SizedBox(
-                height: constraints.maxHeight / 4,
-                width: double.infinity,
-                child: listState(provider, constraints),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-                child: Text(
-                  StringConstants.noticiasSobreCovid,
-                  style: TextStyle(fontSize: 22),
-                ),
-              ),
+              listState(provider, constraints),
+              textNoticiasSobreaCovid(),
               cardNoticiaCovid(constraints),
               const SizedBox(height: 10),
             ],
@@ -170,105 +160,114 @@ class _CovidPageState extends State<CovidPage> {
 
   Padding textInfostatusUpdate() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 5,
-        ),
-        child: Row(
-          children: [
-            const Text(
-              StringConstants.ultimaAtualizacap,
-              style: TextStyle(fontSize: 16),
-            ),
-            const SizedBox(width: 20),
-            Text(
-              (DateFormat(" dd/MM/yyyy")
-                  .format(DateTime.parse(DateTime.now().toString()))),
-              style: const TextStyle(fontSize: 16, color: Colors.white),
-            ),
-          ],
-        ),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      child: Row(
+        children: [
+          const Text(
+            StringConstants.ultimaAtualizacap,
+            style: TextStyle(fontSize: 16),
+          ),
+          const SizedBox(width: 20),
+          Text(
+            (DateFormat(" dd/MM/yyyy")
+                .format(DateTime.parse(DateTime.now().toString()))),
+            style: const TextStyle(fontSize: 16, color: Colors.white),
+          ),
+        ],
       ),
     );
   }
 
-  ListView listState(CovidController provider, BoxConstraints constraints) {
-    return ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: provider.lista.length,
-        itemBuilder: (context, index) {
-          var lista = provider.lista[index];
-          var state = provider.lista[index].state;
-          return InkWell(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Description(data: lista)));
-            },
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 5),
-              width: constraints.maxWidth / 2 - 10,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.grey[600],
+  SizedBox listState(CovidController provider, BoxConstraints constraints) {
+    return SizedBox(
+      height: constraints.maxHeight / 4,
+      width: double.infinity,
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: provider.lista.length,
+          itemBuilder: (context, index) {
+            var lista = provider.lista[index];
+            var state = provider.lista[index].state;
+            return InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Description(data: lista)));
+              },
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 5),
+                width: constraints.maxWidth / 2 - 10,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.grey[600],
+                ),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 10),
+                    Text(
+                      lista.state.toString(),
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                    const SizedBox(height: 10),
+                    FlagWidget(state: state, height: 40),
+                    const SizedBox(height: 10),
+                    const Divider(color: Colors.white70),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 18),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            StringConstants.mortes,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            lista.deaths.toString(),
+                            style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 8,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            StringConstants.casos,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          Text(
+                            lista.cases.toString(),
+                            style: const TextStyle(
+                                fontSize: 16, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              child: Column(
-                children: [
-                  const SizedBox(height: 10),
-                  Text(
-                    lista.state.toString(),
-                    style: const TextStyle(fontSize: 20),
-                  ),
-                  const SizedBox(height: 10),
-                  FlagWidget(state: state, height: 40),
-                  const SizedBox(height: 10),
-                  const Divider(color: Colors.white70),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 18),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          StringConstants.mortes,
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        Text(
-                          lista.deaths.toString(),
-                          style: const TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 8,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          StringConstants.casos,
-                          style: TextStyle(fontSize: 16),
-                        ),
-                        Text(
-                          lista.cases.toString(),
-                          style: const TextStyle(
-                              fontSize: 16, color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        });
+            );
+          }),
+    );
+  }
+
+  Padding textNoticiasSobreaCovid() {
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Text(
+        StringConstants.noticiasSobreCovid,
+        style: TextStyle(fontSize: 20),
+      ),
+    );
   }
 
   Stack cardNoticiaCovid(BoxConstraints constraints) {
