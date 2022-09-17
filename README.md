@@ -6,11 +6,11 @@ uma Api da Covid-19 e mostrar os dados totais de obitos e casos confirmados em c
 foi utilizado uma Search Bar para buscas digitando o nome do estado...para gerenciar o estado da aplicação, foi utilizado o package provider,projeto criado utilizando padrão de arquitetura MVC.
 
 ## Dependencias Utilizadas:
-+ provider,
++ provider:,
 + http:,
 + url_launcher:,
 + intl:,
-+ syncfusion_flutter_charts,
++ syncfusion_flutter_charts:
 
 
 ![covidApp](https://user-images.githubusercontent.com/98062365/190868571-8d50be9c-fe92-4427-ba28-24fbb5713c84.gif)
