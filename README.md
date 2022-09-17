@@ -1,4 +1,4 @@
-<h1>Desafio Marvel App</h1>
+<h1>Covid-19 App</h1>
  >Status: em Desenvolvimento ⚠️
 
 ### O objetivo desse desafio foi criar um App utilizando
