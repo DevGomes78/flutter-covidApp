@@ -4,6 +4,7 @@ import 'package:flutter_covid_project/views/description_page.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../components/flag_widget.dart';
+import '../components/top_card.dart';
 import '../constants/error_constants.dart';
 import '../constants/image_constants.dart';
 import '../constants/service_constants.dart';
@@ -19,18 +20,17 @@ class CovidPage extends StatefulWidget {
 }
 
 class _CovidPageState extends State<CovidPage> {
-  CovidController? controller;
+  CovidController controller = CovidController();
 
   @override
   void initState() {
     loadData();
-
     super.initState();
   }
 
   loadData() {
     controller = context.read<CovidController>();
-    controller!.getData(query: '');
+    controller.getData(query: '');
   }
 
   @override
@@ -45,7 +45,7 @@ class _CovidPageState extends State<CovidPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 10),
-              cardUseMascara(BoxConstraints, constraints),
+              const TopCard(),
               textIfonState(),
               textInfostatusUpdate(),
               const SizedBox(height: 8),
@@ -53,79 +53,6 @@ class _CovidPageState extends State<CovidPage> {
               textNoticiasSobreaCovid(),
               cardNoticiaCovid(constraints),
               const SizedBox(height: 10),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Padding cardUseMascara(boxConstraints, constraints) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 10,
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: SizedBox(
-          height: constraints.maxHeight / 3.7,
-          width: double.infinity,
-          child: Stack(
-            children: [
-              Positioned(
-                left: -10,
-                bottom: -80,
-                child: SizedBox(
-                  height: 280,
-                  child: Image.asset(
-                    ImageConstants.ImageAsset,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              const Positioned(
-                left: 130,
-                bottom: 130,
-                child: Text(
-                  StringConstants.useSempreMascara,
-                  style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const Positioned(
-                left: 170,
-                bottom: 100,
-                child: Text(
-                  StringConstants.utilizeAlcoolGel,
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ),
-              ),
-              const Positioned(
-                left: 170,
-                bottom: 70,
-                child: Text(
-                  StringConstants.eviteAglomeracao,
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ),
-              ),
-              Positioned(
-                left: 170,
-                bottom: 10,
-                child: InkWell(
-                  onTap: callUrlCovid,
-                  child: const Text(
-                    StringConstants.saibaMais + StringConstants.urlCovid,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
             ],
           ),
         ),
@@ -281,7 +208,7 @@ class _CovidPageState extends State<CovidPage> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               image: const DecorationImage(
-                image: AssetImage(ImageConstants.ImageAssetNoticias),
+                image: AssetImage(ImageConstants.imageAssetNoticias),
                 fit: BoxFit.fill,
               ),
             ),
@@ -344,18 +271,5 @@ class _CovidPageState extends State<CovidPage> {
         ),
       ],
     );
-  }
-
-  void callUrlCovid() async {
-    const url = ServiceConstants.urlPrevencaoCovid;
-    if (await launch(url)) {
-      await launch(
-        url,
-        enableJavaScript: true,
-        forceWebView: true,
-      );
-    } else {
-      throw ErrorConstants.erroUrlCovid + url;
-    }
   }
 }
