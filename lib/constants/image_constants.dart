@@ -1,4 +1,4 @@
 class ImageConstants{
-  static const ImageAsset =  'images/mascara.jpg';
-  static const ImageAssetNoticias = 'images/teste.jpg.webp';
+  static const imageAsset =  'images/mascara.jpg';
+  static const imageAssetNoticias = 'images/teste.jpg.webp';
 }
