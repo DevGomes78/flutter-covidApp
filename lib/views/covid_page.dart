@@ -4,9 +4,10 @@ import 'package:flutter_covid_project/constants/string_constants.dart';
 import 'package:provider/provider.dart';
 import '../components/botton_card.dart';
 import '../components/top_card.dart';
-import '../controlers/covid_controller.dart';
 import 'package:intl/intl.dart';
-import '../controlers/search_controller.dart';
+
+import '../service/covid_controller.dart';
+import '../service/search_controller.dart';
 
 class CovidPage extends StatefulWidget {
   const CovidPage({Key? key}) : super(key: key);
@@ -34,27 +35,24 @@ class _CovidPageState extends State<CovidPage> {
     return LayoutBuilder(
       builder: (context, constraints) => Scaffold(
         appBar: buildAppBar(),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 10),
-              const TopCard(),
-              textIfonState(),
-              textInfostatusUpdate(),
-              const SizedBox(height: 8),
-              const ListSate(),
-              textNoticiasSobreaCovid(),
-              const BottonCard(),
-              const SizedBox(height: 10),
-            ],
-          ),
+        body: ListView(
+          children: [
+            const SizedBox(height: 10),
+            const TopCard(),
+            _ifonState(),
+            _lastUpdate(),
+            const SizedBox(height: 8),
+            const ListSate(),
+            textNoticiasSobreaCovid(),
+            const BottonCard(),
+            const SizedBox(height: 10),
+          ],
         ),
       ),
     );
   }
 
-  Padding textIfonState() {
+  _ifonState() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
@@ -79,7 +77,7 @@ class _CovidPageState extends State<CovidPage> {
     );
   }
 
-  Padding textInfostatusUpdate() {
+  _lastUpdate() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: Row(
