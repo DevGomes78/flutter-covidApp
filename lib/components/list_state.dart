@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../constants/error_constants.dart';
 import '../constants/string_constants.dart';
-import '../controlers/covid_controller.dart';
-import '../data/models/covid_models.dart';
+import '../service/covid_controller.dart';
 import '../views/description_page.dart';
 import 'flag_widget.dart';
 
@@ -31,6 +29,10 @@ class _ListSateState extends State<ListSate> {
   @override
   Widget build(BuildContext context) {
     CovidController provider = Provider.of<CovidController>(context);
+    return _listState(context, provider);
+  }
+
+  _listState(BuildContext context, CovidController provider) {
     return SizedBox(
       height: MediaQuery.of(context).size.height / 4,
       width: double.infinity,
