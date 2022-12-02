@@ -39,7 +39,7 @@ class _CovidPageState extends State<CovidPage> {
           children: [
             const SizedBox(height: 10),
             const TopCard(),
-            _ifonState(),
+            _infoState(),
             _lastUpdate(),
             const SizedBox(height: 8),
             const ListSate(),
@@ -52,7 +52,7 @@ class _CovidPageState extends State<CovidPage> {
     );
   }
 
-  _ifonState() {
+  _infoState() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
