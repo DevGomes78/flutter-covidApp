@@ -6,8 +6,9 @@ import '../components/botton_card.dart';
 import '../components/top_card.dart';
 import 'package:intl/intl.dart';
 
+import '../data/models/covid_models.dart';
 import '../service/covid_controller.dart';
-import '../service/search_controller.dart';
+import '../components/search_controller.dart';
 
 class CovidPage extends StatefulWidget {
   const CovidPage({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class CovidPage extends StatefulWidget {
 
 class _CovidPageState extends State<CovidPage> {
   CovidController controller = CovidController();
+  CovidController dateController = CovidController();
 
   @override
   void initState() {
@@ -26,8 +28,10 @@ class _CovidPageState extends State<CovidPage> {
   }
 
   loadData() {
+    dateController = context.read<CovidController>();
+    dateController.getupdate();
     controller = context.read<CovidController>();
-    controller.getData(query: '');
+    controller.getData();
   }
 
   @override
@@ -60,16 +64,16 @@ class _CovidPageState extends State<CovidPage> {
           const Text(
             StringConstants.informacoesPorEstado,
             style: TextStyle(
-              fontSize: 22,
+              fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
-          const SizedBox(width: 80),
+          const SizedBox(width: 40),
           IconButton(
             onPressed: loadData,
             icon: const Icon(
               Icons.refresh,
-              size: 35,
+              size: 30,
             ),
           ),
         ],
@@ -87,11 +91,39 @@ class _CovidPageState extends State<CovidPage> {
             style: TextStyle(fontSize: 16),
           ),
           const SizedBox(width: 20),
-          Text(
-            (DateFormat(" dd/MM/yyyy")
-                .format(DateTime.parse(DateTime.now().toString()))),
-            style: const TextStyle(fontSize: 16, color: Colors.white),
-          ),
+          FutureBuilder<Map<String, dynamic>>(
+              future: dateController.getupdate(),
+              builder: (context, snapshot) {
+                switch (snapshot.connectionState) {
+                  case ConnectionState.none:
+                  case ConnectionState.waiting:
+                    return SizedBox(
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width,
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  default:
+                    if (snapshot.hasError) {
+                      return SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width,
+                        child: const Center(
+                          child: Text('rrorConstants.userNotregister'),
+                        ),
+                      );
+                    } else {
+                      return Text(
+                        (DateFormat(" dd/MM/yyyy").format(DateTime.parse(
+                            dateController.decodejson['data'][0]['datetime']
+                                .toString()))),
+                        style:
+                            const TextStyle(fontSize: 16, color: Colors.white),
+                      );
+                    }
+                }
+              }),
         ],
       ),
     );
