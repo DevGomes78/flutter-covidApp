@@ -30,7 +30,7 @@ class BottonCard extends StatelessWidget {
             height: MediaQuery.of(context).size.height / 4,
             width: double.infinity,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(20),
               gradient: const LinearGradient(
                 colors: [Colors.transparent, Colors.black],
                 begin: Alignment.topCenter,
