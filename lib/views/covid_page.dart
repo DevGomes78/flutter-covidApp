@@ -5,8 +5,6 @@ import 'package:provider/provider.dart';
 import '../components/botton_card.dart';
 import '../components/top_card.dart';
 import 'package:intl/intl.dart';
-
-import '../data/models/covid_models.dart';
 import '../service/covid_controller.dart';
 import '../components/search_controller.dart';
 
@@ -142,30 +140,43 @@ class _CovidPageState extends State<CovidPage> {
   AppBar buildAppBar() {
     return AppBar(
       elevation: 0,
-      title: const Text(
-        StringConstants.appCovid19,
-        style: TextStyle(fontSize: 25, color: Colors.white),
-      ),
-      centerTitle: true,
       leading: IconButton(
         onPressed: () {},
         icon: const Icon(
           Icons.menu,
         ),
       ),
-      actions: [
-        IconButton(
-          onPressed: () {
+      title: Container(
+        width: double.infinity,
+        height: 40,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.black12,
+        ),
+        child: TextField(
+          onTap: () {
             showSearch(
               context: context,
               delegate: SearchState(),
             );
           },
-          icon: const Icon(
-            Icons.search,
+          decoration: InputDecoration(
+            labelText: StringConstants.digiteEstado,
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+            suffixIcon: IconButton(
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: SearchState(),
+                );
+              },
+              icon: const Icon(Icons.search),
+            ),
           ),
         ),
-      ],
+      ),
+      backgroundColor: Colors.black12,
+      centerTitle: true,
     );
   }
 }
