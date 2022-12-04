@@ -23,7 +23,7 @@ class _ListSateState extends State<ListSate> {
 
   loadData() {
     controller = context.read<CovidController>();
-    controller.getData(query: '');
+    controller.getData();
   }
 
   @override
@@ -34,7 +34,7 @@ class _ListSateState extends State<ListSate> {
 
   _listState(BuildContext context, CovidController provider) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 4,
+      height: MediaQuery.of(context).size.height / 3.2,
       width: double.infinity,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -61,7 +61,7 @@ class _ListSateState extends State<ListSate> {
                     const SizedBox(height: 10),
                     Text(
                       lista.state.toString(),
-                      style: const TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 16),
                     ),
                     const SizedBox(height: 10),
                     FlagWidget(state: state, height: 40),
