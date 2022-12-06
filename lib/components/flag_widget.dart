@@ -36,7 +36,7 @@ class FlagWidget extends StatelessWidget {
                                 : state == 'Goiás'
                                     ? SizedBox(
                                         height: height,
-                                        child: Image.asset('images/sc.png'))
+                                        child: Image.asset('images/go.png'))
                                     : state == 'Ceará'
                                         ? SizedBox(
                                             height: height,
