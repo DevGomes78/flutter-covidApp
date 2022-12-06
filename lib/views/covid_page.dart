@@ -6,8 +6,8 @@ import 'package:provider/provider.dart';
 import '../components/botton_card.dart';
 import '../components/top_card.dart';
 import 'package:intl/intl.dart';
-import '../service/covid_controller.dart';
-import '../components/search_controller.dart';
+import '../service/covid_service.dart';
+import '../components/search_state.dart';
 
 class CovidPage extends StatefulWidget {
   const CovidPage({Key? key}) : super(key: key);
