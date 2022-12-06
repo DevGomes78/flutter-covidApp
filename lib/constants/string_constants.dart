@@ -5,7 +5,7 @@ class StringConstants{
   static const useSempreMascara = 'Use sempre mascara!';
   static const utilizeAlcoolGel ='Utilize álcool em gel';
   static const eviteAglomeracao = 'E evite aglomeração';
-  static const appCovid19 = 'App Covid-19';
+  static const appCovid19 = 'Covid-19 App';
   static const digiteEstado ='Digite o estado';
   static const mortes ='Mortes';
   static const casos ='Casos';
