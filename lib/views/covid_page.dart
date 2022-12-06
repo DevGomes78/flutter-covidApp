@@ -140,44 +140,26 @@ class _CovidPageState extends State<CovidPage> {
 
   AppBar buildAppBar() {
     return AppBar(
-      elevation: 0,
       leading: IconButton(
         onPressed: () {},
         icon: const Icon(
           Icons.menu,
         ),
       ),
-      title: Container(
-        width: double.infinity,
-        height: 40,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.black12,
-        ),
-        child: TextField(
-          onTap: () {
+      title: const Text(StringConstants.appCovid19),
+      backgroundColor: Colors.black12,
+      centerTitle: true,
+      actions: [
+        IconButton(
+          onPressed: () {
             showSearch(
               context: context,
               delegate: SearchState(),
             );
           },
-          decoration: InputDecoration(
-            labelText: StringConstants.digiteEstado,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-            suffixIcon: IconButton(
-              onPressed: () {
-                showSearch(
-                  context: context,
-                  delegate: SearchState(),
-                );
-              },
-              icon: const Icon(Icons.search),
-            ),
-          ),
+          icon: const Icon(Icons.search),
         ),
-      ),
-      backgroundColor: Colors.black12,
-      centerTitle: true,
+      ],
     );
   }
 }
