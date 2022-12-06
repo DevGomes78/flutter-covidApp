@@ -17,8 +17,8 @@ class CovidPage extends StatefulWidget {
 }
 
 class _CovidPageState extends State<CovidPage> {
-  CovidController controller = CovidController();
-  CovidController dateController = CovidController();
+  CovidService controller = CovidService();
+  CovidService dateController = CovidService();
 
   @override
   void initState() {
@@ -27,9 +27,9 @@ class _CovidPageState extends State<CovidPage> {
   }
 
   loadData() {
-    dateController = context.read<CovidController>();
+    dateController = context.read<CovidService>();
     dateController.getupdate();
-    controller = context.read<CovidController>();
+    controller = context.read<CovidService>();
     controller.getData();
   }
 
