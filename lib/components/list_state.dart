@@ -74,12 +74,13 @@ class _ListSateState extends State<ListSate> {
                         children: [
                           const Text(
                             StringConstants.mortes,
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 14),
                           ),
+                          const SizedBox(width: 10),
                           Text(
                             lista.deaths.toString(),
                             style: const TextStyle(
-                                fontSize: 16,
+                                fontSize: 14,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
                           )
@@ -96,12 +97,13 @@ class _ListSateState extends State<ListSate> {
                         children: [
                           const Text(
                             StringConstants.casos,
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 14),
                           ),
+                          const SizedBox(width: 10),
                           Text(
                             lista.cases.toString(),
                             style: const TextStyle(
-                                fontSize: 16, color: Colors.white),
+                                fontSize: 14, color: Colors.white),
                           ),
                         ],
                       ),
