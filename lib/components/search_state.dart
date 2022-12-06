@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../constants/string_constants.dart';
 import '../data/models/covid_models.dart';
 import '../views/description_page.dart';
-import '../service/covid_controller.dart';
+import '../service/covid_service.dart';
 
 class SearchState extends SearchDelegate {
   @override
