@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import '../constants/service_constants.dart';
 import '../data/models/covid_models.dart';
 
-class CovidController extends ChangeNotifier {
+class CovidService extends ChangeNotifier {
   List<Data> lista = [];
   var decodejson;
 
