@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../constants/string_constants.dart';
-import '../service/covid_controller.dart';
+import '../service/covid_service.dart';
 import '../views/description_page.dart';
 import 'flag_widget.dart';
 
