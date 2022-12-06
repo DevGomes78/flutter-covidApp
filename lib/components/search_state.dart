@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../constants/string_constants.dart';
 import '../data/models/covid_models.dart';
-import '../views/description_page.dart';
 import '../service/covid_service.dart';
+import '../views/description_page.dart';
 
 class SearchState extends SearchDelegate {
   @override
@@ -30,7 +30,7 @@ class SearchState extends SearchDelegate {
   @override
   Widget buildResults(BuildContext context) {
     return FutureBuilder<List<Data>?>(
-        future: CovidController().getDate(query: query),
+        future: CovidService().getDate(query: query),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const Center(
