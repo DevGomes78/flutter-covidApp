@@ -13,7 +13,7 @@ class ListSate extends StatefulWidget {
 }
 
 class _ListSateState extends State<ListSate> {
-  CovidController controller = CovidController();
+  CovidService controller = CovidService();
 
   @override
   void initState() {
@@ -22,17 +22,17 @@ class _ListSateState extends State<ListSate> {
   }
 
   loadData() {
-    controller = context.read<CovidController>();
+    controller = context.read<CovidService>();
     controller.getData();
   }
 
   @override
   Widget build(BuildContext context) {
-    CovidController provider = Provider.of<CovidController>(context);
+    CovidService provider = Provider.of<CovidService>(context);
     return _listState(context, provider);
   }
 
-  _listState(BuildContext context, CovidController provider) {
+  _listState(BuildContext context, CovidService provider) {
     return SizedBox(
       height: MediaQuery.of(context).size.height / 3.2,
       width: double.infinity,
