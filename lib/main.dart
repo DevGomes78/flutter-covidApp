@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_covid_project/service/covid_controller.dart';
+import 'package:flutter_covid_project/service/covid_service.dart';
 import 'package:flutter_covid_project/views/home_page.dart';
 import 'package:provider/provider.dart';
 
