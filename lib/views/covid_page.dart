@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_covid_project/components/list_state.dart';
+import 'package:flutter_covid_project/constants/error_constants.dart';
 import 'package:flutter_covid_project/constants/string_constants.dart';
 import 'package:provider/provider.dart';
 import '../components/botton_card.dart';
@@ -108,7 +109,7 @@ class _CovidPageState extends State<CovidPage> {
                         height: MediaQuery.of(context).size.height,
                         width: MediaQuery.of(context).size.width,
                         child: const Center(
-                          child: Text('rrorConstants.userNotregister'),
+                          child: Text(ErrorConstants.errorPage),
                         ),
                       );
                     } else {
