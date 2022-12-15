@@ -34,7 +34,7 @@ class _ListSateState extends State<ListSate> {
 
   _listState(BuildContext context, CovidService provider) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 3.2,
+      height: MediaQuery.of(context).size.height / 4.5,
       width: double.infinity,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
