@@ -19,75 +19,73 @@ class _TopCardState extends State<TopCard> {
   }
 
   _topCard(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 10,
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height / 3.7,
-          width: double.infinity,
-          child: Stack(
-            children: [
-              Positioned(
-                left: -10,
-                bottom: -80,
+    return Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height / 3.7,
+              width: double.infinity,
+              child: Positioned(
+                left: 20,
+                bottom: 80,
                 child: SizedBox(
-                  height: 280,
+                  height: 220,
                   child: Image.asset(
                     ImageConstants.imageAsset,
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
-              const Positioned(
-                left: 130,
-                bottom: 130,
-                child: Text(
-                  StringConstants.useSempreMascara,
-                  style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const Positioned(
-                left: 170,
-                bottom: 100,
-                child: Text(
-                  StringConstants.utilizeAlcoolGel,
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ),
-              ),
-              const Positioned(
-                left: 170,
-                bottom: 70,
-                child: Text(
-                  StringConstants.eviteAglomeracao,
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ),
-              ),
-              const Positioned(
-                left: 170,
-                bottom: 10,
-                child: InkWell(
-                  onTap: callUrlCovid,
-                  child: Text(
-                    StringConstants.saibaMais + StringConstants.urlCovid,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
-      ),
+        const Positioned(
+          left: 130,
+          bottom: 150,
+          child: Text(
+            StringConstants.useSempreMascara,
+            style: TextStyle(
+              fontSize: 24,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        const Positioned(
+          left: 170,
+          bottom: 120,
+          child: Text(
+            StringConstants.utilizeAlcoolGel,
+            style: TextStyle(fontSize: 20, color: Colors.black),
+          ),
+        ),
+        const Positioned(
+          left: 170,
+          bottom: 90,
+          child: Text(
+            StringConstants.eviteAglomeracao,
+            style: TextStyle(fontSize: 20, color: Colors.black),
+          ),
+        ),
+        const Positioned(
+          left: 165,
+          bottom: 10,
+          child: InkWell(
+            onTap: callUrlCovid,
+            child: Text(
+              StringConstants.saibaMais + StringConstants.urlCovid,
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
