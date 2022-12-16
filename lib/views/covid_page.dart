@@ -69,7 +69,7 @@ class _CovidPageState extends State<CovidPage> {
           ),
           const SizedBox(width: 130),
           IconButton(
-            onPressed: loadData,
+            onPressed:_lastUpdate ,
             icon: const Icon(
               Icons.refresh,
               size: 30,
@@ -83,47 +83,51 @@ class _CovidPageState extends State<CovidPage> {
   _lastUpdate() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      child: Row(
-        children: [
-          const Text(
-            StringConstants.ultimaAtualizacap,
-            style: TextStyle(fontSize: 16),
-          ),
-          const SizedBox(width: 20),
-          FutureBuilder<Map<String, dynamic>>(
-              future: dateController.getupdate(),
-              builder: (context, snapshot) {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.none:
-                  case ConnectionState.waiting:
-                    return SizedBox(
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width,
-                      child: const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    );
-                  default:
-                    if (snapshot.hasError) {
+      child: SizedBox(
+        height: 30,
+        width: double.infinity,
+        child: Row(
+          children: [
+            const Text(
+              StringConstants.ultimaAtualizacap,
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(width: 20),
+            FutureBuilder<Map<String, dynamic>>(
+                future: dateController.getupdate(),
+                builder: (context, snapshot) {
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.none:
+                    case ConnectionState.waiting:
                       return SizedBox(
                         height: MediaQuery.of(context).size.height,
-                        width: MediaQuery.of(context).size.width,
+                        width: 30,
                         child: const Center(
-                          child: Text(ErrorConstants.errorPage),
+                          child: CircularProgressIndicator(),
                         ),
                       );
-                    } else {
-                      return Text(
-                        (DateFormat(" dd/MM/yyyy").format(DateTime.parse(
-                            dateController.decodejson['data'][0]['datetime']
-                                .toString()))),
-                        style:
-                            const TextStyle(fontSize: 16, color: Colors.white),
-                      );
-                    }
-                }
-              }),
-        ],
+                    default:
+                      if (snapshot.hasError) {
+                        return SizedBox(
+                          height: MediaQuery.of(context).size.height,
+                          width: MediaQuery.of(context).size.width,
+                          child: const Center(
+                            child: Text(ErrorConstants.errorPage),
+                          ),
+                        );
+                      } else {
+                        return Text(
+                          (DateFormat(" dd/MM/yyyy").format(DateTime.parse(
+                              dateController.decodejson['data'][0]['datetime']
+                                  .toString()))),
+                          style:
+                              const TextStyle(fontSize: 16, color: Colors.white),
+                        );
+                      }
+                  }
+                }),
+          ],
+        ),
       ),
     );
   }
