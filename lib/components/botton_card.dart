@@ -45,7 +45,7 @@ class BottonCard extends StatelessWidget {
                   padding: EdgeInsets.all(15.0),
                   child: Text(
                     StringConstants.noticiasTexto,
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(fontSize: 16,color: Colors.white),
                   ),
                 ),
               ],
