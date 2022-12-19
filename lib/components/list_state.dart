@@ -54,7 +54,7 @@ class _ListSateState extends State<ListSate> {
                 width: MediaQuery.of(context).size.width / 2 - 10,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey[600],
+                  color: Colors.grey[400],
                 ),
                 child: Column(
                   children: [
