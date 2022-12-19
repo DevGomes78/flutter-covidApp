@@ -25,18 +25,15 @@ class _TopCardState extends State<TopCard> {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height / 3.7,
-              width: double.infinity,
-              child: Positioned(
-                left: 20,
-                bottom: 80,
-                child: SizedBox(
-                  height: 220,
-                  child: Image.asset(
-                    ImageConstants.imageAsset,
-                    fit: BoxFit.cover,
-                  ),
+            child: Positioned(
+              left: 20,
+              bottom: 80,
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height/4,
+                width: double.infinity,
+                child: Image.asset(
+                  ImageConstants.imageAsset,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
