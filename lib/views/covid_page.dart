@@ -37,6 +37,7 @@ class _CovidPageState extends State<CovidPage> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) => Scaffold(
+        backgroundColor: Colors.white,
         appBar: buildAppBar(),
         body: ListView(
           children: [
@@ -121,7 +122,7 @@ class _CovidPageState extends State<CovidPage> {
                               dateController.decodejson['data'][0]['datetime']
                                   .toString()))),
                           style:
-                              const TextStyle(fontSize: 16, color: Colors.white),
+                              const TextStyle(fontSize: 16, color: Colors.black),
                         );
                       }
                   }
