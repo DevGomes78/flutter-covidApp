@@ -151,7 +151,7 @@ class _CovidPageState extends State<CovidPage> {
           Icons.menu,
         ),
       ),
-      title: const Text(StringConstants.appCovid19),
+      title: const Text(StringConstants.appCovid19,style: TextStyle(color: Colors.black),),
       backgroundColor: Colors.black12,
       centerTitle: true,
       actions: [
