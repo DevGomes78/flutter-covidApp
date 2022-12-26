@@ -46,7 +46,7 @@ class _CovidPageState extends State<CovidPage> {
             _lastUpdate(),
             const SizedBox(height: 8),
             const ListSate(),
-            textNoticiasSobreaCovid(),
+            _newsAboutCovid(),
             const BottonCard(),
             const SizedBox(height: 10),
           ],
@@ -69,7 +69,7 @@ class _CovidPageState extends State<CovidPage> {
           ),
           const SizedBox(width: 130),
           IconButton(
-            onPressed:_lastUpdate ,
+            onPressed: _lastUpdate,
             icon: const Icon(
               Icons.refresh,
               size: 30,
@@ -120,8 +120,8 @@ class _CovidPageState extends State<CovidPage> {
                           (DateFormat(" dd/MM/yyyy").format(DateTime.parse(
                               dateController.decodejson['data'][0]['datetime']
                                   .toString()))),
-                          style:
-                              const TextStyle(fontSize: 16, color: Colors.white),
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.white),
                         );
                       }
                   }
@@ -132,7 +132,7 @@ class _CovidPageState extends State<CovidPage> {
     );
   }
 
-  Padding textNoticiasSobreaCovid() {
+  _newsAboutCovid() {
     return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: Text(
@@ -142,7 +142,7 @@ class _CovidPageState extends State<CovidPage> {
     );
   }
 
-   buildAppBar() {
+  buildAppBar() {
     return AppBar(
       leading: IconButton(
         onPressed: () {},
