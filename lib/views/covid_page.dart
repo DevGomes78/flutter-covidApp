@@ -138,7 +138,7 @@ class _CovidPageState extends State<CovidPage> {
     );
   }
 
-  AppBar buildAppBar() {
+   buildAppBar() {
     return AppBar(
       leading: IconButton(
         onPressed: () {},
