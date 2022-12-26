@@ -105,7 +105,7 @@ class Description extends StatelessWidget {
                   child: Text(
                     data.state.toString(),
                     style: const TextStyle(
-                      fontSize: 25,
+                      fontSize: 20,
                     ),
                   ),
                 ),
