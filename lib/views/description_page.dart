@@ -24,7 +24,7 @@ class Description extends StatelessWidget {
               const SizedBox(height: 40),
               flagInfoDetails(state, context),
               const SizedBox(height: 10),
-              textInfeccoesmensais(),
+              monthlyInfections(),
               graficStatus(constraints),
               const SizedBox(height: 10),
             ],
@@ -34,7 +34,7 @@ class Description extends StatelessWidget {
     );
   }
 
-  Padding textInfeccoesmensais() {
+  monthlyInfections() {
     return const Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 10,
@@ -47,7 +47,7 @@ class Description extends StatelessWidget {
     );
   }
 
-  Padding graficStatus(constraints) {
+  graficStatus(constraints) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -82,7 +82,7 @@ class Description extends StatelessWidget {
     );
   }
 
-  Padding flagInfoDetails(String state, BuildContext context) {
+  flagInfoDetails(String state, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Stack(
