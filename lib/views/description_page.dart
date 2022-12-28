@@ -14,20 +14,28 @@ class Description extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var state = data.state.toString();
-    return LayoutBuilder(
-      builder: (context, constraints) => Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 40),
-              flagInfoDetails(state, context),
-              const SizedBox(height: 10),
-              _infoDetails(),
-              monthlyInfections(),
-              graficStatus(constraints),
-              const SizedBox(height: 10),
-            ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          data.state.toString(),
+          style: const TextStyle(
+            fontSize: 20,
+          ),
+        ),
+      ),
+      body: LayoutBuilder(
+        builder: (context, constraints) => Scaffold(
+          body: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 10),
+                _infoDetails(),
+                monthlyInfections(),
+                graficStatus(constraints),
+                const SizedBox(height: 10),
+              ],
+            ),
           ),
         ),
       ),
@@ -43,7 +51,7 @@ class Description extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10), color: Colors.white12),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -64,6 +72,7 @@ class Description extends StatelessWidget {
                         fontSize: 20,
                       ),
                     ),
+                    const SizedBox(height: 10),
                     Text(
                       data.deaths.toString(),
                       style: const TextStyle(
@@ -92,6 +101,7 @@ class Description extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 80),
+                    const SizedBox(height: 10),
                     Text(
                       data.cases.toString(),
                       style: const TextStyle(
@@ -152,60 +162,6 @@ class Description extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  flagInfoDetails(String state, BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white12,
-            ),
-            height: 100,
-            width: double.infinity,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 100,
-                    vertical: 20,
-                  ),
-                  child: Text(
-                    data.state.toString(),
-                    style: const TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                  FlagWidget(state: state, height: 20),
-                const SizedBox(height: 10),
-              ],
-            ),
-          ),
-          Positioned(
-            child: IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CovidPage(),
-                  ),
-                );
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-                size: 30,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
