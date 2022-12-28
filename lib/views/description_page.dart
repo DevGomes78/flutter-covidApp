@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_covid_project/components/flag_widget.dart';
 import 'package:flutter_covid_project/constants/string_constants.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import '../components/flag_widget.dart';
 import '../data/models/infections.dart';
 import '../data/models/covid_models.dart';
-import 'covid_page.dart';
 
 class Description extends StatelessWidget {
   Data data;
@@ -22,6 +21,15 @@ class Description extends StatelessWidget {
             fontSize: 20,
           ),
         ),
+        actions: [
+          Container(
+            height: 30,
+            width: 30,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50)
+            ),
+            child: FlagWidget(state: state,height: 10,),)
+        ],
       ),
       body: LayoutBuilder(
         builder: (context, constraints) => Scaffold(
