@@ -14,7 +14,7 @@ class FlagWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return state == 'São Paulo'
-        ? SizedBox(height: height, child: Image.asset('images/saopaulo.png'))
+        ? SizedBox(height: height, child: Image.asset('images/saopaulo.png',fit: BoxFit.fill,))
         : state == 'Minas Gerais'
             ? SizedBox(height: height, child: Image.asset('images/mg.jpg'))
             : state == 'Paraná'
