@@ -157,28 +157,7 @@ class Description extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
-                  child: Row(
-                    children: [
-                      const Text(
-                        StringConstants.suspeitos,
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                      const SizedBox(width: 45),
-                      Text(
-                        data.suspects.toString(),
-                        style: const TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+
                 const SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.symmetric(
