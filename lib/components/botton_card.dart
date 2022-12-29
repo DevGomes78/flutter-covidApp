@@ -16,7 +16,7 @@ class BottonCard extends StatelessWidget {
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Container(
-          height: MediaQuery.of(context).size.height / 4-10,
+          height: MediaQuery.of(context).size.height / 3.6-10,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
