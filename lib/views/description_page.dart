@@ -14,7 +14,23 @@ class Description extends StatelessWidget {
   Widget build(BuildContext context) {
     var state = data.state.toString();
     return Scaffold(
-      appBar: _buildAppBar(state),
+      appBar: AppBar(
+        title: Text(
+          data.state.toString(),
+          style: const TextStyle(
+            fontSize: 20,
+          ),
+        ),
+        actions: [
+          Container(
+            height: 30,
+            width: 30,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50)
+            ),
+            child: FlagWidget(state: state,height: 10,),)
+        ],
+      ),
       body: LayoutBuilder(
         builder: (context, constraints) => Scaffold(
           body: SingleChildScrollView(
@@ -31,26 +47,6 @@ class Description extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  _buildAppBar(String state) {
-    return AppBar(
-      title: Text(
-        data.state.toString(),
-        style: const TextStyle(
-          fontSize: 20,
-        ),
-      ),
-      actions: [
-        Container(
-          height: 30,
-          width: 30,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50)
-          ),
-          child: FlagWidget(state: state,height: 10,),)
-      ],
     );
   }
 
