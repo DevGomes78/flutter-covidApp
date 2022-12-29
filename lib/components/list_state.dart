@@ -64,7 +64,9 @@ class _ListSateState extends State<ListSate> {
                       style: const TextStyle(fontSize: 16),
                     ),
                     const SizedBox(height: 10),
-                    FlagWidget(state: state, height: 40),
+                    ClipRRect(
+                        borderRadius: BorderRadius.circular(40),
+                        child: FlagWidget(state: state, height: 50)),
                     const SizedBox(height: 10),
                     const Divider(color: Colors.white70),
                     Padding(
