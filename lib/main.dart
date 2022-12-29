@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          brightness: Brightness.dark,
+          brightness: Brightness.light,
         ),
         home: const HomePage(),
       ),
