@@ -82,7 +82,7 @@ class _CovidPageState extends State<CovidPage> {
 
   _lastUpdate() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: SizedBox(
         height: 30,
         width: double.infinity,
