@@ -34,7 +34,7 @@ class _ListSateState extends State<ListSate> {
 
   _listState(BuildContext context, CovidService provider) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 4.9,
+      height: MediaQuery.of(context).size.height / 4.5,
       width: double.infinity,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -54,14 +54,14 @@ class _ListSateState extends State<ListSate> {
                 width: MediaQuery.of(context).size.width / 2 - 10,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey[600],
+                  color: Colors.black54,
                 ),
                 child: Column(
                   children: [
                     const SizedBox(height: 10),
                     Text(
                       lista.state.toString(),
-                      style: const TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16,color: Colors.white),
                     ),
                     const SizedBox(height: 10),
                     ClipRRect(
@@ -76,7 +76,7 @@ class _ListSateState extends State<ListSate> {
                         children: [
                           const Text(
                             StringConstants.mortes,
-                            style: TextStyle(fontSize: 14),
+                            style: TextStyle(fontSize: 14,color: Colors.white),
                           ),
                           const SizedBox(width: 10),
                           Text(
@@ -89,17 +89,17 @@ class _ListSateState extends State<ListSate> {
                         ],
                       ),
                     ),
+                    const Divider(color: Colors.white),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 20,
-                        vertical: 8,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text(
                             StringConstants.casos,
-                            style: TextStyle(fontSize: 14),
+                            style: TextStyle(fontSize: 14,color: Colors.white),
                           ),
                           const SizedBox(width: 10),
                           Text(
