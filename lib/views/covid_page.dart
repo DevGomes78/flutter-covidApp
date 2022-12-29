@@ -121,7 +121,7 @@ class _CovidPageState extends State<CovidPage> {
                               dateController.decodejson['data'][0]['datetime']
                                   .toString()))),
                           style: const TextStyle(
-                              fontSize: 16, color: Colors.white),
+                              fontSize: 16),
                         );
                       }
                   }
