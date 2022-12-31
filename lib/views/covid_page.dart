@@ -37,6 +37,7 @@ class _CovidPageState extends State<CovidPage> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) => Scaffold(
+
         appBar: buildAppBar(),
         body: ListView(
           children: [
